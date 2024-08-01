@@ -1,0 +1,41 @@
+---
+title: 'Webhook Example'
+description: 'Example of webhook'
+---
+
+An example of a webhook whose link is specified when creating an Invoice in the urlStatusWebhook field.
+
+## Example
+<Info>
+  Method: *POST* <br />
+  Format: *JSON*
+</Info>
+
+```json
+{
+  "wallet_currency": "EUR",
+  "invoice_amount": 10,
+  "wallet_amount": 10,
+  "invoice_currency": "EUR",
+  "url_status_webhook": "https://example.com",
+  "expected_amount": 10.67,
+  "status": "Paid",
+  "uuid": "ea2b7e8e-db2f-490c-826n-258e55dbb96e",
+  "invoice_url": "https://api.finup.io/invoice?id=ea2b7e8e-db2f-490c-826n-258e55dbb96e",
+  "additional_data": "",
+  "url_return": "https://example.com",
+  "url_success": "https://example.com",
+  "expire_at": "2024-04-15T19:18:46.062Z",
+  "finup_id": "INV7204643904",
+  "createdAt": "2024-02-29T00:00:00.000Z",
+  "updatedAt": "2024-02-30T00:00:00.000Z",
+  "deposit_address": "TCsSbZmYejUBoPjPWQ9PkvBNmEgNb7JxE2",
+  "paid_amount": 12.03,
+  "paid_coin_short_name": "USDT",
+  "paid_network_short_name": "Tron",
+  "paid_coin_long_name": "Tether USD",
+  "paid_network_long_name": "Tron (TRC-20)"
+}
+```
+
+

@@ -1,0 +1,94 @@
+---
+title: 'Introduction'
+description: 'API endpoints'
+---
+## Get Started
+
+<Info>
+Base API Url is https://api.finup.io/
+</Info>
+
+<Warning>All API keys, links, logos, IDs are not real and are provided for example.</Warning>
+
+## Authentication
+
+[Create Invoice](/api-reference/endpoint/invoice/create-invoice) and [Delete Invoice](/api-reference/endpoint/invoice/delete-invoice) endpoint are authenticated using `API keys` and picked up from headers.
+
+```json
+{
+  "Authorization": "xdOGy...psPqSt"
+}
+```
+
+## Examples
+Here are some quick examples to show you how easy it is to use out API:
+
+### Create new invoice example
+Learn more about creating invoices [here](/api-reference/endpoint/invoice/create-invoice).
+```javascript createInvoice.js
+import axios from 'axios';
+
+(async () => {
+  const baseUrl = "https://api.finup.io";
+  const headers = {
+    "Authorization": "xdOGy...psPqSt", // Replace this
+    "Content-Type": "application/json"
+  }
+
+  const body = {
+    "wallet_currency": "USD",
+    "invoice_amount": 100,
+    "invoice_currency": "USD",
+    "additional_data": {
+      "order-id": "zxcvbn" // Any your additional data
+    },
+    "url_return": "https://www.google.com/", // URL to which the "Back" button will lead to
+    "url_success": "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // URL to which the user will be redirected upon successful payment
+    "type": "Regular"
+  };
+
+  const createInvoiceData = await axios.post(baseUrl + "/invoices", body, { headers: headers }); // Creating new invoice
+
+  console.log(createInvoiceData.data); // { "account": "12312312", "invoiceAmount": 100, "type": "Invoice", ... }
+})
+```
+
+### Creating P2P invoice example
+This is the same as the previous example, only the type must be ``"P2P"``. Also make sure you add the correct addresses. Learn more about P2P invoices [here](/api-reference/invoice-types#p2p).
+```Javascript
+const body = {
+  "wallet_currency": "USD",
+  "invoice_amount": 100,
+  "invoice_currency": "USD",
+  "additional_data": {
+    "order-id": "zxcvbn" // Any your additional data
+  },
+  "url_return": "https://www.google.com/", // URL to which the "Back" button will lead to
+  "url_success": "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // URL to which the user will be redirected upon successful payment
+  "type": "P2P"
+}
+// ...
+```
+
+### Get invoice example
+Learn more about getting invoices [here](/api-reference/endpoint/invoice/get-invoice).
+```Javascript getInvoice.js
+import axios from 'axios';
+
+(async () => {
+  const baseUrl = "https://api.finup.io";
+  const headers = {
+    "Authorization": "Bearer eyJasga111111", // Replace this
+    "Content-Type": "application/json"
+  }
+
+  const id = "74e283b6-...-822f3623f59c";
+
+  const createInvoiceData = await axios.get(baseUrl + `/invoices/${id}`, { headers: headers }); // Creating new invoice
+
+  console.log(createInvoiceData.data); // { "account": "12312312", "invoice_amount": 100, "type": "Invoice", ... }
+})
+```
+
+### Auto Redirect
+Learn more about auto redirect [here](/api-reference/autoredirect).

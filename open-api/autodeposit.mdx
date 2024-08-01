@@ -1,0 +1,4 @@
+# How does Auto Deposit work?
+When [issuing](/open-api/card/issue-cards) or in the card menu (in the Finup interface) you can enable the `"Auto-deposit"` function and choose at what amount on the card it is replenished and by what amount.
+For example, when the card balance drops to 5\$, the card will be replenished with 10\$. To do this, specify the field `"deposit_amount": 10`, and `"bottom_amount": 5`.
+The amount is deducted from the wallet of the same currency as the card.

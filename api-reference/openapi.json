@@ -1,0 +1,5878 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/status": {
+      "get": {
+        "operationId": "AppController_statusCodeFunc",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "No body required",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Server is working correctly"
+          },
+          "409": {
+            "description": "Server is not working"
+          }
+        },
+        "tags": [
+          "Root"
+        ]
+      }
+    },
+    "/user": {
+      "get": {
+        "operationId": "UserController_getUser",
+        "summary": "Get user by himself",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Current user",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserReturnTypeOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/user/invites": {
+      "get": {
+        "operationId": "UserController_getUserInvites",
+        "summary": "Get invites linked to user's email",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GetInvitesOutput"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/users/{user_id}/verify": {
+      "post": {
+        "operationId": "UserController_verifyUser",
+        "summary": "Verify a user by their mongo ID",
+        "parameters": [
+          {
+            "name": "user_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifyUserDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/members/{id}": {
+      "get": {
+        "operationId": "MemberController_getMember",
+        "summary": "Get invites",
+        "deprecated": true,
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMemberOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Member"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/user/invites/approve": {
+      "post": {
+        "operationId": "MemberController_membershipAccept",
+        "summary": "Accept membership to user",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AcceptMembershipDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Member"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/user/invites/decline": {
+      "post": {
+        "operationId": "MemberController_membershipDecline",
+        "summary": "Decline membership to user",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeclineMembershipDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Member"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/accounts/{id}/members": {
+      "post": {
+        "operationId": "MemberController_getAccountMembers",
+        "summary": "Get account members",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAccountMembersDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMembersOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Member"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/members/{member_id}/role": {
+      "patch": {
+        "operationId": "MemberController_updateRole",
+        "summary": "Update accounts member",
+        "parameters": [
+          {
+            "name": "member_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateRoleDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Member"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/accounts/{id}/members/invite": {
+      "patch": {
+        "operationId": "MemberController_inviteMember",
+        "summary": "Get account wallets",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InviteMemberDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Member"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/members/{member_id}/suspend": {
+      "patch": {
+        "operationId": "MemberController_suspendMember",
+        "summary": "Member suspend",
+        "parameters": [
+          {
+            "name": "member_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Member"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/members/{member_id}/resume": {
+      "patch": {
+        "operationId": "MemberController_resumeMember",
+        "summary": "Member resume",
+        "parameters": [
+          {
+            "name": "member_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Member"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/members/{member_id}/disable": {
+      "patch": {
+        "operationId": "MemberController_disableMember",
+        "summary": "Set member disabled status",
+        "parameters": [
+          {
+            "name": "member_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Member"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/accounts/approve": {
+      "post": {
+        "operationId": "AccountController_approveAccount",
+        "summary": "Confirm account request by support/admin",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Confirming account data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApproveAccountDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Returns approved account",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Account"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/accounts/{id}": {
+      "get": {
+        "operationId": "AccountController_getAccount",
+        "summary": "Get specify account by id",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "Id of account",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Account ID",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAccountDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Returns account by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAccountOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/accounts": {
+      "post": {
+        "operationId": "AccountController_getAllAccounts",
+        "summary": "Get all accounts by support/admin",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Accounts body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAccountsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAccountsOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/accounts/{id}/name": {
+      "patch": {
+        "operationId": "AccountController_setAccountName",
+        "summary": "Update account name",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetAccountNameDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Name was successfully updated"
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/accounts/setLimit": {
+      "patch": {
+        "operationId": "AccountController_setAccountLimit",
+        "summary": "Set account limit",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetAccountLimitDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/account/setStatus": {
+      "patch": {
+        "operationId": "AccountController_setAccountStatus",
+        "summary": "Set account status",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetAccountStatusDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/accounts/{id}/bins": {
+      "get": {
+        "operationId": "AccountController_getCardTypes",
+        "summary": "Get Card Type by Account",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "Id of account",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAccountBins"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/transfer": {
+      "post": {
+        "operationId": "AccountController_confirmationAccountTransfer",
+        "summary": "Account transfer confirmation",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfirmationAccountTransferDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/transfer/internal": {
+      "post": {
+        "operationId": "AccountController_accountTransferInternal",
+        "summary": "Account transfer confirmation",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfirmationAccountTransferDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/transfer/rate": {
+      "post": {
+        "operationId": "AccountController_rateAccountTransfer",
+        "summary": "Account transfer rate",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RateAccountTransferDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/wallets/{wallet_id}/withdraw": {
+      "post": {
+        "operationId": "AccountController_requestWithdraw",
+        "summary": "Request withdrawing money from wallet",
+        "parameters": [
+          {
+            "name": "wallet_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestWithdrawDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/withdraw/{withdraw_id}/approve": {
+      "post": {
+        "operationId": "AccountController_approveWithdraw",
+        "summary": "Approve withdraw request",
+        "parameters": [
+          {
+            "name": "withdraw_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApproveWithdrawDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/withdraw/{withdraw_id}/decline": {
+      "post": {
+        "operationId": "AccountController_declineWithdraw",
+        "summary": "Decline withdraw request",
+        "parameters": [
+          {
+            "name": "withdraw_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/wallets/{wallet_id}/withdraw-methods": {
+      "get": {
+        "operationId": "AccountController_getWithdrawMethods",
+        "summary": "Return all allowed Withdraw Methods by wallet",
+        "parameters": [
+          {
+            "name": "wallet_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetWithdrawMethodsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/accounts/{id}/payment-sources": {
+      "post": {
+        "operationId": "AccountController_getPaymentSources",
+        "summary": "Return available payment sources (wallets, cards)",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetPaymentSourcesDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Available payments sources (wallets, cards)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPaymentSourcesOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/accounts/graph": {
+      "post": {
+        "operationId": "AccountController_getGraphData",
+        "summary": "Returns graph of previous account balances",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Graph body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetGraphDataDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Graph of the history of account balances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GraphReturn"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/accounts/create": {
+      "post": {
+        "operationId": "AccountController_createAccount",
+        "summary": "Creating new Account in existing Company",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccountCreateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success account create"
+          },
+          "400": {
+            "description": "Error with dto or creating object in DB"
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/accounts/{id}/payments/statements": {
+      "post": {
+        "operationId": "PaymentController_getPayment",
+        "summary": "Get payment statements by user",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetPaymentStatementDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Return statements of user payment history",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaymentStatementsOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Payment"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/payment": {
+      "get": {
+        "operationId": "PaymentController_getInvoice",
+        "summary": "Get invoice",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "query",
+            "description": "UUID of the invoice",
+            "example": "74e283b6-...-822f3623f59c",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return invoice",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceGetOutput"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Invalid ID. Invoice not found"
+          }
+        },
+        "tags": [
+          "Payment"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/accounts/{id}/payments": {
+      "post": {
+        "operationId": "PaymentController_getAccountPayments",
+        "summary": "Get account payments",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAccountPaymentsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Returns payments by filters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetPaymentsOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Payment"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/accounts/{id}/notifications": {
+      "get": {
+        "operationId": "NotificationController_getNotifications",
+        "summary": "Get notification",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "query",
+            "description": "mongo of the Account",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return notifications"
+          },
+          "404": {
+            "description": "Invalid ID. Account not found"
+          }
+        }
+      },
+      "patch": {
+        "operationId": "NotificationController_readNotification",
+        "summary": "Get notification",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "query",
+            "description": "mongo of the Account",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return notifications"
+          },
+          "404": {
+            "description": "Invalid ID. Account not found"
+          }
+        }
+      }
+    },
+    "/upload/avatar/{filename}": {
+      "get": {
+        "operationId": "UploadController_getAvatar",
+        "parameters": [
+          {
+            "name": "filename",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Upload"
+        ]
+      }
+    },
+    "/upload/statements/{filename}": {
+      "get": {
+        "operationId": "UploadController_getPaymentStatements",
+        "parameters": [
+          {
+            "name": "filename",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Upload"
+        ]
+      }
+    },
+    "/webhook/transaction": {
+      "post": {
+        "operationId": "WebhookController_webhook",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/currency/add": {
+      "post": {
+        "operationId": "CurrencyController_addCurrency",
+        "summary": "Add currency to bata daze",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddCurrencyDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Currency"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Currecncy"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/currency/get": {
+      "post": {
+        "operationId": "CurrencyController_getCurrency",
+        "summary": "Get currency by long_name",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetCurrencyDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Currency"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Currecncy"
+        ]
+      }
+    },
+    "/payByFinup": {
+      "post": {
+        "operationId": "TransactionController_payByFinup",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PayByFinupDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Transaction"
+        ]
+      }
+    },
+    "/accounts/{id}/cards/issuing": {
+      "post": {
+        "operationId": "CardController_issueCards",
+        "summary": "Issue cards",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "Id of account",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IssueCardsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/cards/{card_id}/autodeposit": {
+      "patch": {
+        "operationId": "CardController_autoDepositEdit",
+        "summary": "Issue cards",
+        "parameters": [
+          {
+            "name": "card_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AutoDepositEditDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "CardController_autoDepositDisable",
+        "summary": "Issue cards",
+        "parameters": [
+          {
+            "name": "card_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AutoDepositDisableDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/cards/issuing/rate": {
+      "post": {
+        "operationId": "CardController_rateIssueCards",
+        "summary": "Rate Issue cards",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RateCardIssueDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/cards/suspend": {
+      "patch": {
+        "operationId": "CardController_suspendCards",
+        "summary": "Suspend cards by support/admin",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BlockCardDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Card suspended successfully"
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/cards/resume": {
+      "patch": {
+        "operationId": "CardController_resumeCard",
+        "summary": "Resume cards",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BlockCardDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Card resumed successfully"
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/cards/close": {
+      "patch": {
+        "operationId": "CardController_canselCard",
+        "summary": "Cancel cards",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BlockCardDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Card closed successfully"
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/card/get": {
+      "post": {
+        "operationId": "CardController_getCardByAccount",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/cards/withdraw": {
+      "post": {
+        "operationId": "CardController_cardsWithdraw",
+        "summary": "Bulk withdraw from cards",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BulkCardWithdrawDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/card/payment/approve": {
+      "post": {
+        "operationId": "CardController_payApprove",
+        "summary": "v",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RateCardIssueDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/accounts/{id}/cards": {
+      "post": {
+        "operationId": "CardController_getAccountCards",
+        "summary": "Get account cards",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "description": "Id of account",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetCardsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Returns cards of account (by ID)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAccountCards"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/cards/{card_id}/name": {
+      "patch": {
+        "operationId": "CardController_cardUpdateName",
+        "summary": "Card update",
+        "parameters": [
+          {
+            "name": "card_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardUpdateNameDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/cards/{card_id}/otp": {
+      "get": {
+        "operationId": "CardController_getCardOtp",
+        "summary": "Returns the last OTP card that is not older than 10 minutes",
+        "parameters": [
+          {
+            "name": "card_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Return OTP of the card",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCardOtpOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/cards/{card_id}": {
+      "get": {
+        "operationId": "CardController_getAccountCard",
+        "summary": "Get specified account card",
+        "parameters": [
+          {
+            "name": "card_id",
+            "required": true,
+            "in": "path",
+            "description": "ID of the card",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns card by ID",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetCardOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/cards/reveal": {
+      "post": {
+        "operationId": "CardController_viewCards",
+        "summary": "Reveal cards ",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetCardNumberDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RevealCardOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "operationId": "AuthController_signInLocal",
+        "summary": "Local sign in by email and password",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Authentication data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignInLocalDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignInOutput"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Wrong email or password exception"
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/auth/signup": {
+      "post": {
+        "operationId": "AuthController_signUpLocal",
+        "summary": "Local sign up by email and password",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Registration data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignUpLocalDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignInOutput"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Already registered exception"
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/auth/email/confirmation": {
+      "post": {
+        "operationId": "AuthController_sendEmailConfirmation",
+        "summary": "Request account email confirmation",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body is empty",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      },
+      "patch": {
+        "operationId": "AuthController_confirmEmail",
+        "summary": "Account activation confirmation code sent to e-mail",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Confirmation code",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfirmEmailDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/auth/reset/password": {
+      "post": {
+        "operationId": "AuthController_initResetPassword",
+        "summary": "Initialize resetting password",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetPasswordDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      },
+      "put": {
+        "operationId": "AuthController_approveResetPassword",
+        "summary": "Initialize resetting password",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResetTokenDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      },
+      "patch": {
+        "operationId": "AuthController_setResetPassword",
+        "summary": "Initialize resetting password",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetNewPasswordDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/auth/password": {
+      "patch": {
+        "operationId": "AuthController_setNewPassword",
+        "summary": "Initialize resetting password",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetNewPasswordDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/auth/refresh": {
+      "post": {
+        "operationId": "AuthController_refreshToken",
+        "summary": "Update access token",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshTokenDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/companies": {
+      "get": {
+        "operationId": "CompanyController_getCompanies",
+        "summary": "Get all Companies",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Company"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Company"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/admin/company/approve": {
+      "post": {
+        "operationId": "CompanyController_approveCompany",
+        "summary": "Approve company",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Company"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/company/accounts": {
+      "post": {
+        "operationId": "CompanyController_geAccountByCompanies",
+        "summary": "Get all Companies",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Company"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Company"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/admin/companies": {
+      "get": {
+        "operationId": "CompanyController_getAllCompanies",
+        "summary": "Get all Companies",
+        "parameters": [],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Company"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Company"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/wallets/{id}/deposit": {
+      "post": {
+        "operationId": "WalletController_createRequisite",
+        "summary": "Create requisite by Deposit Method",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRequisiteDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/accounts/{id}/wallets": {
+      "get": {
+        "operationId": "WalletController_getAccountWallets",
+        "summary": "Get account wallets",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAccountWalletsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "default": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetAccountWalletsOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Wallet"
+        ]
+      }
+    },
+    "/wallet/payment": {
+      "post": {
+        "operationId": "WalletController_payment",
+        "summary": "Create requisite by Deposit Method",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateRequisiteDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Wallet"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/invoices/{invoice_uuid}": {
+      "get": {
+        "operationId": "InvoiceController_getInvoice",
+        "summary": "Get invoice",
+        "parameters": [
+          {
+            "name": "invoice_uuid",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "required": true,
+            "in": "query",
+            "description": "UUID of the invoice",
+            "example": "74e283b6-...-822f3623f59c",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return invoice",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceGetOutput"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Invalid ID. Invoice not found"
+          }
+        },
+        "tags": [
+          "Invoice"
+        ]
+      }
+    },
+    "/invoices/{invoice_id}": {
+      "delete": {
+        "operationId": "InvoiceController_deleteInvoice",
+        "summary": "delete invoice",
+        "parameters": [
+          {
+            "name": "invoice_id",
+            "required": true,
+            "in": "path",
+            "description": "Id of the invoice",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeleteInvoiceDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Invoice has been deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invoice"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Invoice"
+        ]
+      }
+    },
+    "/invoices": {
+      "post": {
+        "operationId": "InvoiceController_createInvoice",
+        "summary": "Create invoice",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "description": "Create Invoice Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateInvoiceDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Invoice has been created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateInvoiceType"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Invoice"
+        ]
+      }
+    },
+    "/invoices/{invoice_id}/rate": {
+      "post": {
+        "operationId": "InvoiceController_getInvoiceRate",
+        "summary": "Get Invoice Rate",
+        "parameters": [
+          {
+            "name": "invoice_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetInvoiceRateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Return current rate of invoice",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Invoice"
+        ]
+      }
+    },
+    "/invoices/{invoice_id}/confirm": {
+      "post": {
+        "operationId": "InvoiceController_confirmInvoiceNetwork",
+        "summary": "Get Invoice Rate",
+        "parameters": [
+          {
+            "name": "invoice_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfirmInvoiceNetworkDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Invoice has been confirmed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Invoice"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Invoice"
+        ]
+      }
+    },
+    "/invoices/auto_redirect": {
+      "get": {
+        "operationId": "InvoiceController_autoRedirect",
+        "parameters": [
+          {
+            "name": "merchant_id",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "amount",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "invoice_currency",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "wallet_currency",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sign",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "order_id",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Invoice"
+        ]
+      }
+    },
+    "/coins": {
+      "get": {
+        "operationId": "CoinController_getAllCoins",
+        "summary": "Returns all coins and networks",
+        "parameters": [
+          {
+            "name": "invoice_id",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return all coins with networks",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CoinsOutputType"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Coin"
+        ]
+      }
+    },
+    "/coin/create": {
+      "post": {
+        "operationId": "CoinController_createCoin",
+        "summary": "",
+        "description": "Admin endpoint. Creates new coin",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Coin body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateCoinDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Coin"
+        ]
+      }
+    },
+    "/accounts/{id}/merchants": {
+      "post": {
+        "operationId": "MerchantController_createMerchant",
+        "summary": "Create new Merchant",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Merchant Data",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateMerchantDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Merchant Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateMerchantOutput"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad payload provided"
+          }
+        },
+        "tags": [
+          "Merchant"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "MerchantController_getMerchants",
+        "summary": "Get Merchants",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Merchant data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMerchantsOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Merchant"
+        ]
+      }
+    },
+    "/merchants/{merchant_id}": {
+      "delete": {
+        "operationId": "MerchantController_deleteMerchant",
+        "summary": "Delete Merchant",
+        "parameters": [
+          {
+            "name": "merchant_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad payload provided"
+          }
+        },
+        "tags": [
+          "Merchant"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "MerchantController_editMerchant",
+        "summary": "Edit's Merchant",
+        "parameters": [
+          {
+            "name": "merchant_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditMerchantDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Edited merchant",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMerchantOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Merchant"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/merchants/{id}": {
+      "get": {
+        "operationId": "MerchantController_getMerchant",
+        "summary": "Get Merchant",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Merchant data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMerchantOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Merchant"
+        ]
+      }
+    },
+    "/merchants/{merchant_id}/api_key": {
+      "post": {
+        "operationId": "MerchantController_newApiKeyForMerchant",
+        "summary": "Create new ApiKey for Merchant",
+        "parameters": [
+          {
+            "name": "merchant_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "New API key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMerchantOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Merchant"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/merchants/{merchant_id}/address": {
+      "post": {
+        "operationId": "MerchantController_addNewMerchantAddress",
+        "summary": "Add new P2P address for merchant",
+        "parameters": [
+          {
+            "name": "merchant_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddNewAddressDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateAddressOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Merchant"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "MerchantController_getMerchantAddresses",
+        "summary": "Get list of all Merchant Addresses",
+        "parameters": [
+          {
+            "name": "merchant_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateAddressesOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Merchant"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/merchants/address/{address_id}": {
+      "delete": {
+        "operationId": "MerchantController_deleteMerchantAddress",
+        "summary": "Delete P2P merchant address",
+        "parameters": [
+          {
+            "name": "address_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Merchant"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "MerchantController_editMerchantAddress",
+        "summary": "Delete P2P merchant address",
+        "parameters": [
+          {
+            "name": "address_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EditMerchantAddressDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateAddressOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Merchant"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/merchants/{merchant_id}/invoices": {
+      "post": {
+        "operationId": "MerchantController_getInvoiceByMerchant",
+        "summary": "Get invoices by merchant",
+        "parameters": [
+          {
+            "name": "merchant_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetInvoicesByMerchantDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMerchantInvoicesOutput"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Merchant"
+        ]
+      }
+    },
+    "/referrals/{id}": {
+      "post": {
+        "operationId": "ReferralController_clickToCode",
+        "parameters": [
+          {
+            "name": ":referral_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Referral"
+        ]
+      },
+      "get": {
+        "operationId": "ReferralController_getCode",
+        "summary": "Get referral code by id",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "query",
+            "description": "mongo of the ref code",
+            "example": "66267213ed31bde102a659b8",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return referral code data"
+          }
+        },
+        "tags": [
+          "Referral"
+        ]
+      }
+    },
+    "/accounts/{id}/referrals": {
+      "get": {
+        "operationId": "ReferralController_getAccountCodes",
+        "summary": "Get referral code by account id",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "account_id",
+            "required": true,
+            "in": "query",
+            "description": "mongo id of the account",
+            "example": "66267213ed31bde102a659b8",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Referral"
+        ]
+      }
+    },
+    "/accounts/{id}/promocode": {
+      "post": {
+        "operationId": "PromoController_applyCode",
+        "summary": "Applyies promo code",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplyCodeDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/promo/create": {
+      "post": {
+        "operationId": "PromoController_createCode",
+        "summary": "Creates new code (Admin)",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateNewCodeDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "info": {
+    "title": "FinUp Wallet",
+    "description": "API Documentation for FinUp",
+    "version": "1.0",
+    "contact": {
+
+    }
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      }
+    },
+    "schemas": {
+      "UserReturnTypeOutput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID of user"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "email_confirmed": {
+            "type": "boolean"
+          },
+          "verification": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "first_name",
+          "last_name",
+          "email",
+          "email_confirmed",
+          "verification"
+        ]
+      },
+      "GetInvitesOutput": {
+        "type": "object",
+        "properties": {
+
+        }
+      },
+      "VerifyUserDto": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "user_id"
+        ]
+      },
+      "_GetMemberOutput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID of the schema"
+          },
+          "invite_email": {
+            "type": "string",
+            "description": "Invited email",
+            "example": "example@example.com"
+          },
+          "status": {
+            "type": "string",
+            "description": "Member status",
+            "enum": [
+              "Enabled",
+              "Disabled",
+              "Pending",
+              "Suspended"
+            ],
+            "example": "Enabled | Disabled | Pending | Suspended"
+          },
+          "role": {
+            "type": "string",
+            "description": "Role of member",
+            "enum": [
+              "Admin",
+              "Bookkeeper",
+              "Employee"
+            ],
+            "example": "Admin | Bookkeeper | Employee"
+          },
+          "email": {
+            "type": "string",
+            "description": "Email of member",
+            "example": "example@example.com"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "First name of member",
+            "example": "John"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "Last name of member",
+            "example": "Doe"
+          }
+        },
+        "required": [
+          "id",
+          "invite_email",
+          "email",
+          "first_name",
+          "last_name"
+        ]
+      },
+      "GetMemberOutput": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "description": "ID of the schema",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/_GetMemberOutput"
+              }
+            ]
+          }
+        },
+        "required": [
+          "result"
+        ]
+      },
+      "AcceptMembershipDto": {
+        "type": "object",
+        "properties": {
+          "member_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "member_id"
+        ]
+      },
+      "DeclineMembershipDto": {
+        "type": "object",
+        "properties": {
+          "member_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "member_id"
+        ]
+      },
+      "PaginationV2Dto": {
+        "type": "object",
+        "properties": {
+          "per_page": {
+            "type": "number",
+            "nullable": false,
+            "minimum": 0,
+            "example": 1
+          },
+          "page": {
+            "type": "number",
+            "nullable": false,
+            "minimum": 0,
+            "example": 1
+          },
+          "sort_by": {
+            "type": "string",
+            "description": "Field by which the sorting will be performed",
+            "example": "created_at"
+          },
+          "sort_direction": {
+            "type": "string",
+            "description": "Direction of sort",
+            "enum": [
+              "asc",
+              "desc"
+            ],
+            "example": "asc | desc"
+          }
+        }
+      },
+      "GetAccountMembersFilters": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "type": "string",
+            "enum": [
+              "Admin",
+              "Bookkeeper",
+              "Employee"
+            ],
+            "example": [
+              [
+                "Admin",
+                "Bookkeeper",
+                "Employee"
+              ]
+            ]
+          },
+          "search": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "role",
+          "search"
+        ]
+      },
+      "GetAccountMembersDto": {
+        "type": "object",
+        "properties": {
+          "pagination": {
+            "$ref": "#/components/schemas/PaginationV2Dto"
+          },
+          "filters": {
+            "$ref": "#/components/schemas/GetAccountMembersFilters"
+          }
+        },
+        "required": [
+          "pagination",
+          "filters"
+        ]
+      },
+      "GetMembersOutput": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "description": "ID of the schema",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_GetMemberOutput"
+            }
+          }
+        },
+        "required": [
+          "result"
+        ]
+      },
+      "UpdateRoleDto": {
+        "type": "object",
+        "properties": {
+          "role": {
+            "type": "string",
+            "enum": [
+              "Admin",
+              "Bookkeeper",
+              "Employee"
+            ]
+          }
+        },
+        "required": [
+          "role"
+        ]
+      },
+      "InviteMemberDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email"
+          },
+          "role": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "role"
+        ]
+      },
+      "ApproveAccountDto": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_id"
+        ]
+      },
+      "Account": {
+        "type": "object",
+        "properties": {
+          "company": {
+            "type": "string",
+            "description": "Account company",
+            "example": "Acme Inc."
+          },
+          "finup_id": {
+            "type": "string",
+            "description": "Account number",
+            "example": "12345678"
+          },
+          "name": {
+            "type": "string",
+            "description": "Account name",
+            "example": "Finup Account"
+          },
+          "status": {
+            "type": "string",
+            "description": "Account status",
+            "example": "Pending | Enabled | Disabled | Suspended"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "GetAccountDto": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_id"
+        ]
+      },
+      "Company": {
+        "type": "object",
+        "properties": {
+          "finup_id": {
+            "type": "string",
+            "description": "Our id",
+            "nullable": false
+          },
+          "price_plan": {
+            "type": "string"
+          },
+          "forecast": {
+            "description": "Company forecast",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/CompanyForecasts"
+              }
+            ]
+          },
+          "utm": {
+            "example": {
+              "utm_campaign": "Start24_10"
+            },
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/UTM"
+              }
+            ]
+          },
+          "owner": {
+            "description": "Company owner",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/ObjectId"
+              }
+            ]
+          },
+          "referral_code": {
+            "type": "string",
+            "description": "Referral code"
+          }
+        },
+        "required": [
+          "finup_id",
+          "price_plan",
+          "forecast",
+          "utm",
+          "owner",
+          "referral_code"
+        ]
+      },
+      "_GetAccountOutput": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "member_id": {
+            "type": "string"
+          },
+          "finup_id": {
+            "type": "string"
+          },
+          "total_balance": {
+            "type": "number",
+            "description": "Balance of all cards and wallets in the account"
+          },
+          "wallet_balance": {
+            "type": "number"
+          },
+          "card_balance": {
+            "type": "number"
+          },
+          "company": {
+            "$ref": "#/components/schemas/Company"
+          }
+        },
+        "required": [
+          "name",
+          "member_id",
+          "finup_id",
+          "total_balance",
+          "wallet_balance",
+          "card_balance",
+          "company"
+        ]
+      },
+      "GetAccountOutput": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/_GetAccountOutput"
+          }
+        },
+        "required": [
+          "result"
+        ]
+      },
+      "GetAccountsDto": {
+        "type": "object",
+        "properties": {
+          "pagination": {
+            "$ref": "#/components/schemas/PaginationV2Dto"
+          }
+        },
+        "required": [
+          "pagination"
+        ]
+      },
+      "_GetAccounts": {
+        "type": "object",
+        "properties": {
+          "company": {
+            "type": "string",
+            "description": "Account company",
+            "example": "Acme Inc."
+          },
+          "finup_id": {
+            "type": "string",
+            "description": "Account number",
+            "example": "12345678"
+          },
+          "name": {
+            "type": "string",
+            "description": "Account name",
+            "example": "Finup Account"
+          },
+          "status": {
+            "type": "string",
+            "description": "Account status",
+            "example": "Pending | Enabled | Disabled | Suspended"
+          },
+          "id": {
+            "type": "string",
+            "description": "Low-level ID of the account"
+          }
+        },
+        "required": [
+          "status",
+          "id"
+        ]
+      },
+      "PaginationOutput": {
+        "type": "object",
+        "properties": {
+          "current_page": {
+            "type": "number",
+            "description": "Current page",
+            "example": 1
+          },
+          "total_records": {
+            "type": "number",
+            "description": "Length of all array",
+            "example": 10
+          },
+          "total_pages": {
+            "type": "number",
+            "description": "Number of total pages. Total_records / per_page",
+            "example": 2
+          }
+        }
+      },
+      "GetAccountsOutput": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_GetAccounts"
+            }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/PaginationOutput"
+          }
+        },
+        "required": [
+          "result",
+          "pagination"
+        ]
+      },
+      "SetAccountNameDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "SetAccountLimitDto": {
+        "type": "object",
+        "properties": {
+          "limitAmount": {
+            "type": "number"
+          },
+          "limitPeriod": {
+            "type": "string"
+          },
+          "account_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "limitAmount",
+          "limitPeriod",
+          "account_ids"
+        ]
+      },
+      "SetAccountStatusDto": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "example": "Pending | Enabled | Disabled | Suspended"
+          }
+        },
+        "required": [
+          "account_id",
+          "status"
+        ]
+      },
+      "PriceList": {
+        "type": "object",
+        "properties": {
+
+        }
+      },
+      "_GetAccountBins": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Low-level ID of the cardType"
+          },
+          "bank_partner": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "Active",
+              "Disabled",
+              "NoAccess"
+            ],
+            "description": "Status of the card"
+          },
+          "BIN": {
+            "type": "string",
+            "description": "The first six digits of the card.",
+            "example": "4612 75"
+          },
+          "category": {
+            "type": "string",
+            "description": "Category of the card",
+            "example": "Advertising"
+          },
+          "digital_wallet": {
+            "type": "boolean"
+          },
+          "3ds": {
+            "type": "boolean",
+            "description": "Does this need a 3DS password for this type of card."
+          },
+          "integration_id": {
+            "type": "string"
+          },
+          "price_list": {
+            "description": "List of commissions",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PriceList"
+              }
+            ]
+          },
+          "3ds_password": {
+            "type": "number"
+          },
+          "currency": {
+            "type": "string",
+            "example": "USD"
+          },
+          "percentage_fee": {
+            "type": "string",
+            "example": 1
+          },
+          "fixed_fee": {
+            "type": "string",
+            "example": 1
+          }
+        },
+        "required": [
+          "id",
+          "bank_partner",
+          "status",
+          "BIN",
+          "category",
+          "digital_wallet",
+          "3ds",
+          "integration_id",
+          "price_list",
+          "3ds_password",
+          "currency",
+          "percentage_fee",
+          "fixed_fee"
+        ]
+      },
+      "GetAccountBins": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_GetAccountBins"
+            }
+          }
+        },
+        "required": [
+          "result"
+        ]
+      },
+      "ConfirmationAccountTransferDto": {
+        "type": "object",
+        "properties": {
+          "from_amount": {
+            "type": "number"
+          },
+          "from_source_id": {
+            "type": "string"
+          },
+          "to_source_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from_amount",
+          "from_source_id",
+          "to_source_id"
+        ]
+      },
+      "RateAccountTransferDto": {
+        "type": "object",
+        "properties": {
+          "from_source_id": {
+            "type": "string"
+          },
+          "to_source_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from_source_id",
+          "to_source_id"
+        ]
+      },
+      "RequestWithdrawDto": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "number"
+          },
+          "withdraw_method_id": {
+            "type": "string"
+          },
+          "address_to": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "amount",
+          "withdraw_method_id",
+          "address_to"
+        ]
+      },
+      "ApproveWithdrawDto": {
+        "type": "object",
+        "properties": {
+          "hash": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "hash"
+        ]
+      },
+      "GetWithdrawMethodsDto": {
+        "type": "object",
+        "properties": {
+          "wallet_id": {
+            "type": "string"
+          },
+          "account_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "wallet_id",
+          "account_id"
+        ]
+      },
+      "GetPaymentSourcesDto": {
+        "type": "object",
+        "properties": {
+          "search_by_substring": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "search_by_substring"
+        ]
+      },
+      "GetPaymentSourcesOutput": {
+        "type": "object",
+        "properties": {
+
+        }
+      },
+      "GetGraphDataDto": {
+        "type": "object",
+        "properties": {
+          "wallet_id": {
+            "type": "string"
+          },
+          "account_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "wallet_id",
+          "account_id"
+        ]
+      },
+      "GraphReturn": {
+        "type": "object",
+        "properties": {
+
+        }
+      },
+      "AccountCreateDto": {
+        "type": "object",
+        "properties": {
+          "account_name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_name"
+        ]
+      },
+      "StatmentFilters": {
+        "type": "object",
+        "properties": {
+          "from_created_at": {
+            "type": "string"
+          },
+          "to_created_at": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "from_created_at",
+          "to_created_at"
+        ]
+      },
+      "GetPaymentStatementDto": {
+        "type": "object",
+        "properties": {
+          "format": {
+            "type": "string",
+            "example": "csv|xlsx"
+          },
+          "filters": {
+            "$ref": "#/components/schemas/StatmentFilters"
+          }
+        },
+        "required": [
+          "format",
+          "filters"
+        ]
+      },
+      "PaymentStatementsOutput": {
+        "type": "object",
+        "properties": {
+
+        }
+      },
+      "Merchant": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID of merchant"
+          },
+          "account": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          },
+          "logo": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "finup_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "account",
+          "name",
+          "link",
+          "logo",
+          "status",
+          "finup_id"
+        ]
+      },
+      "PaidDataReturn": {
+        "type": "object",
+        "properties": {
+          "paid_amount": {
+            "type": "number",
+            "description": "Amount paid by the user (specified in invoiceCurrency)"
+          },
+          "paid_coin_id": {
+            "type": "string"
+          },
+          "paid_network_id": {
+            "type": "string"
+          },
+          "paid_coin_short_name": {
+            "type": "string",
+            "example": "USDT"
+          },
+          "paid_network_short_name": {
+            "type": "string",
+            "example": "Tron"
+          },
+          "paid_coin_long_name": {
+            "type": "string",
+            "example": "Tether USD"
+          },
+          "paid_network_long_name": {
+            "type": "string",
+            "example": "Tron"
+          }
+        },
+        "required": [
+          "paid_amount",
+          "paid_coin_id",
+          "paid_network_id",
+          "paid_coin_short_name",
+          "paid_network_short_name",
+          "paid_coin_long_name",
+          "paid_network_long_name"
+        ]
+      },
+      "InvoiceGetOutput": {
+        "type": "object",
+        "properties": {
+          "account": {
+            "type": "string"
+          },
+          "wallet_currency": {
+            "type": "string",
+            "example": "USD | EUR | RUB | UAH"
+          },
+          "invoice_amount": {
+            "type": "number",
+            "example": 123
+          },
+          "wallet_amount": {
+            "type": "number",
+            "example": 123,
+            "description": "Amount to be credited to wallet (specified in wallet_currency)"
+          },
+          "invoice_currency": {
+            "type": "string",
+            "example": "USD | EUR | RUB | UAH"
+          },
+          "expected_amount": {
+            "type": "number",
+            "example": 123,
+            "description": "Amount paid by the user (specified in invoiceCurrency)"
+          },
+          "merchant": {
+            "$ref": "#/components/schemas/Merchant"
+          },
+          "status": {
+            "type": "string",
+            "example": "Paid | Underpaid | Locked | Expired | Canceled | Processing | Pending"
+          },
+          "uuid": {
+            "type": "string",
+            "example": "ea7b7e8e-db3f-490c-816b-252e55dbb16e"
+          },
+          "deposit_address": {
+            "type": "string",
+            "example": "TH8jErz9Qq5LRvw1LrpSrjVNMajxrR3BNy"
+          },
+          "invoice_url": {
+            "type": "string",
+            "example": "https://wallet.finup.io/invoice?id=ea2b5e8e-db5f-420c-816a-258a55dbb96e"
+          },
+          "additional_data": {
+            "type": "object"
+          },
+          "url_return": {
+            "type": "string",
+            "description": "URL to which the \"Back\" button will lead. "
+          },
+          "url_success": {
+            "type": "string",
+            "description": "URL to which the user will be redirected upon successful payment. "
+          },
+          "expire_at": {
+            "type": "string",
+            "example": "2024-04-25T09:06:28.402Z",
+            "description": "TZ Datetime object"
+          },
+          "finup_id": {
+            "type": "string"
+          },
+          "paid_data": {
+            "example": "",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/PaidDataReturn"
+              }
+            ]
+          }
+        },
+        "required": [
+          "account",
+          "wallet_currency",
+          "invoice_amount",
+          "wallet_amount",
+          "invoice_currency",
+          "expected_amount",
+          "merchant",
+          "status",
+          "uuid",
+          "deposit_address",
+          "invoice_url",
+          "additional_data",
+          "url_return",
+          "url_success",
+          "expire_at",
+          "finup_id",
+          "paid_data"
+        ]
+      },
+      "GetAccountPaymentsFilters": {
+        "type": "object",
+        "properties": {
+          "side": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "type": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "source_id": {
+            "type": "string"
+          },
+          "from_created_at": {
+            "type": "string"
+          },
+          "to_created_at": {
+            "type": "string"
+          },
+          "search": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "side",
+          "type",
+          "status",
+          "source_id",
+          "from_created_at",
+          "to_created_at",
+          "search"
+        ]
+      },
+      "GetAccountPaymentsDto": {
+        "type": "object",
+        "properties": {
+          "filters": {
+            "$ref": "#/components/schemas/GetAccountPaymentsFilters"
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/PaginationV2Dto"
+          }
+        },
+        "required": [
+          "filters",
+          "pagination"
+        ]
+      },
+      "_GetPaymentsOutput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID of the Payment"
+          },
+          "account_id": {
+            "type": "string"
+          },
+          "source_id": {
+            "type": "string"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "Card",
+              "Wallet"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "Pending",
+              "Declined",
+              "Approved",
+              "Processing",
+              "Referral"
+            ]
+          },
+          "side": {
+            "type": "string",
+            "enum": [
+              "Credit",
+              "Debit"
+            ]
+          },
+          "amount": {
+            "type": "number"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "Fee",
+              "FeeSpecial",
+              "InternalTransfer",
+              "Referral",
+              "ExternalTransfer",
+              "Card",
+              "Pay",
+              "Sepa",
+              "Merchant"
+            ]
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          },
+          "source_identifier": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "account_id",
+          "source_id",
+          "source",
+          "status",
+          "currency",
+          "type",
+          "created_at",
+          "updated_at",
+          "source_identifier"
+        ]
+      },
+      "GetPaymentsOutput": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_GetPaymentsOutput"
+            }
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/PaginationOutput"
+          }
+        },
+        "required": [
+          "result",
+          "pagination"
+        ]
+      },
+      "AddCurrencyDto": {
+        "type": "object",
+        "properties": {
+          "long_name": {
+            "type": "string"
+          },
+          "short_name": {
+            "type": "string"
+          },
+          "network": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          },
+          "apiName": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "long_name",
+          "short_name",
+          "network",
+          "icon",
+          "apiName"
+        ]
+      },
+      "Currency": {
+        "type": "object",
+        "properties": {
+          "long_name": {
+            "type": "string",
+            "description": "Full name of currency"
+          },
+          "short_name": {
+            "type": "string",
+            "description": "Short name of currency"
+          },
+          "api_name": {
+            "type": "string",
+            "description": "currency for api ",
+            "example": "Pending | Enabled | Disabled | Suspended"
+          },
+          "network": {
+            "type": "string",
+            "description": "Network of currency"
+          },
+          "icon": {
+            "type": "string",
+            "description": "URL for currency's icon"
+          }
+        },
+        "required": [
+          "api_name"
+        ]
+      },
+      "GetCurrencyDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "PayByFinupDto": {
+        "type": "object",
+        "properties": {
+          "invoice_id": {
+            "type": "string"
+          },
+          "wallet_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "invoice_id",
+          "wallet_id"
+        ]
+      },
+      "IssueCardsDto": {
+        "type": "object",
+        "properties": {
+          "card_type": {
+            "type": "string",
+            "description": "ID of card_type"
+          },
+          "name": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Number of cards to be created"
+          },
+          "wallet_id": {
+            "type": "string"
+          },
+          "deposit_amount": {
+            "type": "number",
+            "description": "Amount of replenishment at auto deposit. Read more about Auto Deposit [here](open-api/autodeposit)."
+          },
+          "bottom_amount": {
+            "type": "number",
+            "description": "Deposit threshold for auto deposit. Read more about Auto Deposit [here](open-api/autodeposit)."
+          }
+        },
+        "required": [
+          "card_type",
+          "name",
+          "amount",
+          "wallet_id"
+        ]
+      },
+      "AutoDepositEditDto": {
+        "type": "object",
+        "properties": {
+          "deposit_amount": {
+            "type": "number"
+          },
+          "bottom_amount": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "deposit_amount",
+          "bottom_amount"
+        ]
+      },
+      "AutoDepositDisableDto": {
+        "type": "object",
+        "properties": {
+          "card_id": {
+            "type": "string"
+          },
+          "account_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "card_id",
+          "account_id"
+        ]
+      },
+      "RateCardIssueDto": {
+        "type": "object",
+        "properties": {
+          "wallet_id": {
+            "type": "string"
+          },
+          "card_type": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "wallet_id",
+          "card_type"
+        ]
+      },
+      "BlockCardDto": {
+        "type": "object",
+        "properties": {
+          "card_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "card_ids"
+        ]
+      },
+      "BulkCardWithdrawDto": {
+        "type": "object",
+        "properties": {
+          "card_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "card_ids"
+        ]
+      },
+      "GetCardsFilters": {
+        "type": "object",
+        "properties": {
+          "bin": {
+            "description": "List of allowable BINs.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "type": "array",
+            "example": "[\"Enabled\", \"Canceled\"]",
+            "items": {
+              "type": "string",
+              "enum": [
+                "Enabled",
+                "Processing",
+                "Canceled",
+                "Suspended"
+              ]
+            }
+          },
+          "currency": {
+            "description": "A list of allowable currencies. Pass the currency ID.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "balance_from": {
+            "type": "number",
+            "description": "A filtering parameter that specifies the minimum balance value. Only objects with balance exceeding this value are returned"
+          },
+          "balance_to": {
+            "type": "number",
+            "description": "A filtering parameter that specifies the maximum balance value. Only objects with balance that do not exceed this value are returned"
+          },
+          "search": {
+            "type": "string",
+            "description": "Parameter that searches by substring."
+          }
+        }
+      },
+      "GetCardsDto": {
+        "type": "object",
+        "properties": {
+          "filters": {
+            "$ref": "#/components/schemas/GetCardsFilters"
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/PaginationV2Dto"
+          }
+        },
+        "required": [
+          "filters",
+          "pagination"
+        ]
+      },
+      "_GetCardOutput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID of the schema"
+          },
+          "linked_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "member": {
+            "type": "string"
+          },
+          "user": {
+            "type": "string"
+          },
+          "account": {
+            "type": "string"
+          },
+          "card_type": {
+            "type": "string"
+          },
+          "bank_card_id": {
+            "type": "string"
+          },
+          "PAN": {
+            "type": "string"
+          },
+          "EXP": {
+            "type": "string"
+          },
+          "CVV": {
+            "type": "string"
+          },
+          "masked_PAN": {
+            "type": "string"
+          },
+          "finup_id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "balance": {
+            "type": "number",
+            "default": 0
+          },
+          "deposit": {
+            "type": "number",
+            "default": 0
+          },
+          "withdraw": {
+            "type": "number",
+            "default": 0
+          },
+          "spent": {
+            "type": "number",
+            "default": 0
+          },
+          "status_bank": {
+            "type": "string"
+          },
+          "avaliable_bank_limit": {
+            "type": "number"
+          },
+          "used_bank_limit": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "Enabled",
+              "Processing",
+              "Canceled",
+              "Suspended"
+            ]
+          },
+          "auto_deposit": {
+            "type": "boolean"
+          },
+          "bottom_amount": {
+            "type": "number"
+          },
+          "auto_deposit_amount": {
+            "type": "number"
+          },
+          "digital_wallet": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "linked_at",
+          "avaliable_bank_limit",
+          "used_bank_limit",
+          "status",
+          "bottom_amount",
+          "auto_deposit_amount"
+        ]
+      },
+      "GetAccountCards": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_GetCardOutput"
+            }
+          }
+        },
+        "required": [
+          "result"
+        ]
+      },
+      "CardUpdateNameDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "_GetCardOtpOutput": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "bank_card_id": {
+            "type": "string"
+          },
+          "card": {
+            "type": "string"
+          },
+          "merchant_name": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "purchase_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "description": "ID of the Otp"
+          }
+        },
+        "required": [
+          "code",
+          "bank_card_id",
+          "card",
+          "merchant_name",
+          "amount",
+          "currency",
+          "purchase_at",
+          "id"
+        ]
+      },
+      "GetCardOtpOutput": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_GetCardOtpOutput"
+            }
+          }
+        },
+        "required": [
+          "result"
+        ]
+      },
+      "GetCardOutput": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/_GetCardOutput"
+          }
+        },
+        "required": [
+          "result"
+        ]
+      },
+      "GetCardNumberDto": {
+        "type": "object",
+        "properties": {
+          "card_ids": {
+            "description": "A list of cards for mass action application.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "card_ids"
+        ]
+      },
+      "_RevealCardOutput": {
+        "type": "object",
+        "properties": {
+          "PAN": {
+            "type": "string",
+            "description": "Decrypted PAN",
+            "example": "4301 5410 0231 2646"
+          },
+          "EXP": {
+            "type": "string",
+            "description": "Decrypted EXP",
+            "example": "05/28"
+          },
+          "CVV": {
+            "type": "string",
+            "description": "Decrypted CVV",
+            "example": "123"
+          }
+        }
+      },
+      "RevealCardOutput": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_RevealCardOutput"
+            }
+          }
+        },
+        "required": [
+          "result"
+        ]
+      },
+      "SignInLocalDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ]
+      },
+      "SignInOutput": {
+        "type": "object",
+        "properties": {
+          "refresh_token": {
+            "type": "string",
+            "description": "Refresh JWT",
+            "nullable": false
+          },
+          "access_token": {
+            "type": "string",
+            "description": "Access JWT",
+            "nullable": false
+          },
+          "email": {
+            "type": "string",
+            "description": "User email",
+            "nullable": false
+          }
+        },
+        "required": [
+          "refresh_token",
+          "access_token",
+          "email"
+        ]
+      },
+      "Utms": {
+        "type": "object",
+        "properties": {
+
+        }
+      },
+      "SignUpLocalDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "utm": {
+            "$ref": "#/components/schemas/Utms"
+          }
+        },
+        "required": [
+          "email",
+          "password",
+          "first_name",
+          "last_name",
+          "utm"
+        ]
+      },
+      "ConfirmEmailDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "code"
+        ]
+      },
+      "ResetPasswordDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email"
+        ]
+      },
+      "ResetTokenDto": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "code"
+        ]
+      },
+      "SetNewPasswordDto": {
+        "type": "object",
+        "properties": {
+          "current_password": {
+            "type": "string"
+          },
+          "new_password": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "current_password",
+          "new_password"
+        ]
+      },
+      "RefreshTokenDto": {
+        "type": "object",
+        "properties": {
+          "refresh_token": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "refresh_token"
+        ]
+      },
+      "CompanyForecasts": {
+        "type": "object",
+        "properties": {
+          "av_card_volume": {
+            "type": "string"
+          },
+          "av_spend_volume": {
+            "type": "string"
+          },
+          "use_case": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "av_card_volume",
+          "av_spend_volume",
+          "use_case"
+        ]
+      },
+      "UTM": {
+        "type": "object",
+        "properties": {
+
+        }
+      },
+      "ObjectId": {
+        "type": "object",
+        "properties": {
+
+        }
+      },
+      "CreateRequisiteDto": {
+        "type": "object",
+        "properties": {
+
+        }
+      },
+      "GetAccountWalletsDto": {
+        "type": "object",
+        "properties": {
+          "account_id": {
+            "type": "string"
+          },
+          "search_by_substring": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "account_id",
+          "search_by_substring"
+        ]
+      },
+      "WalletItem": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID of wallet"
+          },
+          "balance": {
+            "type": "number",
+            "description": "Balance of wallet"
+          },
+          "finup_id": {
+            "type": "string",
+            "description": "ID of wallet in Finup interface"
+          },
+          "currency": {
+            "type": "string",
+            "description": "Currency"
+          }
+        },
+        "required": [
+          "id",
+          "balance",
+          "finup_id",
+          "currency"
+        ]
+      },
+      "GetAccountWalletsOutput": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "description": "Array of all wallets",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WalletItem"
+            }
+          }
+        },
+        "required": [
+          "result"
+        ]
+      },
+      "DeleteInvoiceDto": {
+        "type": "object",
+        "properties": {
+          "invoice_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "invoice_id"
+        ]
+      },
+      "Coin": {
+        "type": "object",
+        "properties": {
+          "currency": {
+            "type": "string",
+            "description": "Currency ID"
+          },
+          "short_name": {
+            "type": "string",
+            "example": "USDT"
+          },
+          "long_name": {
+            "type": "string",
+            "example": "Tether USD"
+          },
+          "networks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "icon": {
+            "type": "string",
+            "example": "https://example.com/img/coins/trx.svg"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "Enabled",
+              "TemporaryDisabled",
+              "Deleted"
+            ],
+            "example": "Enabled",
+            "description": "Status of coin."
+          },
+          "decimals": {
+            "type": "number",
+            "description": "Number of decimal places"
+          }
+        },
+        "required": [
+          "currency",
+          "short_name",
+          "long_name",
+          "networks",
+          "icon",
+          "status",
+          "decimals"
+        ]
+      },
+      "Network": {
+        "type": "object",
+        "properties": {
+          "short_name": {
+            "type": "string"
+          },
+          "long_name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "short_name",
+          "long_name",
+          "description",
+          "icon"
+        ]
+      },
+      "Invoice": {
+        "type": "object",
+        "properties": {
+          "account": {
+            "type": "string",
+            "description": "AccountId"
+          },
+          "wallet_currency": {
+            "type": "string",
+            "example": "USD | EUR | RUB | UAH"
+          },
+          "invoice_amount": {
+            "type": "number",
+            "example": 123
+          },
+          "wallet_amount": {
+            "type": "number",
+            "example": 123,
+            "description": "Amount to be credited to wallet (specified in wallet_currency)"
+          },
+          "invoice_currency": {
+            "type": "string",
+            "example": "USD | EUR | RUB | UAH"
+          },
+          "url_status_webhook": {
+            "type": "string",
+            "example": "example.com"
+          },
+          "expected_amount": {
+            "type": "number",
+            "example": 123
+          },
+          "paid_amount": {
+            "type": "number",
+            "description": "Amount paid by the user (specified in invoiceCurrency)"
+          },
+          "paid_coin_id": {
+            "$ref": "#/components/schemas/Coin"
+          },
+          "paid_network_id": {
+            "$ref": "#/components/schemas/Network"
+          },
+          "paid_coin_short_name": {
+            "type": "string",
+            "example": "USDT"
+          },
+          "paid_network_short_name": {
+            "type": "string",
+            "example": "Tron"
+          },
+          "paid_coin_long_name": {
+            "type": "string",
+            "example": "Tether USD"
+          },
+          "paid_network_long_name": {
+            "type": "string",
+            "example": "Tron"
+          },
+          "payout_amount": {
+            "type": "number",
+            "example": 123
+          },
+          "invoice_network": {
+            "type": "string",
+            "example": "Tron"
+          },
+          "merchant": {
+            "$ref": "#/components/schemas/Merchant"
+          },
+          "status": {
+            "type": "string",
+            "example": "Paid | Underpaid | Locked | Expired | Canceled | Processing | Pending"
+          },
+          "uuid": {
+            "type": "string",
+            "example": "ea7b7e8e-db3f-490c-816b-252e55dbb16e"
+          },
+          "deposit_address": {
+            "type": "string",
+            "example": "TH8jErz9Qq5LRvw1LrpSrjVNMajxrR3BNy"
+          },
+          "tx_hash": {
+            "type": "string",
+            "example": "f86c93622454db684153beb65358593292d83fb3be8ae6a1082715af977023c6"
+          },
+          "invoice_url": {
+            "type": "string",
+            "example": "https://wallet-api.finup.io/invoice?id=ea2b5e8e-db5f-420c-816a-258a55dbb96e"
+          },
+          "additional_data": {
+            "type": "object"
+          },
+          "url_return": {
+            "type": "string",
+            "description": "URL to which the \"Back\" button will lead. "
+          },
+          "url_success": {
+            "type": "string",
+            "description": "URL to which the user will be redirected upon successful payment. "
+          },
+          "expire_at": {
+            "type": "string",
+            "example": "2024-04-25T09:06:28.402Z",
+            "description": "TZ Datetime object"
+          },
+          "finup_id": {
+            "type": "string"
+          },
+          "invoice_type": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "Regular",
+              "P2P"
+            ],
+            "example": "Regular",
+            "description": "Type of invoice"
+          }
+        },
+        "required": [
+          "account",
+          "wallet_currency",
+          "invoice_amount",
+          "wallet_amount",
+          "invoice_currency",
+          "url_status_webhook",
+          "expected_amount",
+          "paid_amount",
+          "paid_coin_id",
+          "paid_network_id",
+          "paid_coin_short_name",
+          "paid_network_short_name",
+          "paid_coin_long_name",
+          "paid_network_long_name",
+          "payout_amount",
+          "invoice_network",
+          "merchant",
+          "status",
+          "uuid",
+          "deposit_address",
+          "tx_hash",
+          "invoice_url",
+          "additional_data",
+          "url_return",
+          "url_success",
+          "expire_at",
+          "finup_id",
+          "invoice_type",
+          "type"
+        ]
+      },
+      "CreateInvoiceDto": {
+        "type": "object",
+        "properties": {
+          "merchant_id": {
+            "type": "string"
+          },
+          "account_id": {
+            "type": "string"
+          },
+          "wallet_currency": {
+            "type": "string",
+            "description": "Currency of the wallet to which the user's payment will be sent. (Only works if it is not a `P2P` invoice). At the moment, there are only USD, EUR, USDT wallets."
+          },
+          "invoice_amount": {
+            "type": "number",
+            "description": "Invoice amount in invoiceCurrency"
+          },
+          "invoice_currency": {
+            "type": "string",
+            "enum": [
+              "EUR",
+              "USD",
+              "UAH",
+              "RUB"
+            ]
+          },
+          "additional_data": {
+            "type": "object",
+            "description": "Arbitrary data. You can specify anything."
+          },
+          "url_status_webhook": {
+            "type": "string",
+            "description": "The link that will receive the webhook. You can read more about it [here](/api-reference/webhookExample)."
+          },
+          "url_return": {
+            "type": "string",
+            "description": "The link to which would be the \"Back\" button on the invoice."
+          },
+          "url_success": {
+            "type": "string",
+            "description": "This is the link to which the user will be redirected after successful payment of the invoice."
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "Regular",
+              "P2P"
+            ],
+            "description": "Type of invoice. Can be Regular or P2P."
+          }
+        },
+        "required": [
+          "merchant_id",
+          "account_id",
+          "wallet_currency",
+          "invoice_amount",
+          "invoice_currency",
+          "additional_data",
+          "url_status_webhook",
+          "url_return",
+          "url_success",
+          "type"
+        ]
+      },
+      "CreateInvoiceType": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/InvoiceGetOutput"
+          }
+        },
+        "required": [
+          "result"
+        ]
+      },
+      "GetInvoiceRateDto": {
+        "type": "object",
+        "properties": {
+          "coin_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "coin_id"
+        ]
+      },
+      "ConfirmInvoiceNetworkDto": {
+        "type": "object",
+        "properties": {
+          "coin_id": {
+            "type": "string"
+          },
+          "network_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "coin_id",
+          "network_id"
+        ]
+      },
+      "CoinsOutputType": {
+        "type": "object",
+        "properties": {
+          "currency": {
+            "type": "string",
+            "description": "Currency ID"
+          },
+          "short_name": {
+            "type": "string",
+            "example": "USDT"
+          },
+          "long_name": {
+            "type": "string",
+            "example": "Tether USD"
+          },
+          "networks": {
+            "example": {
+              "short_name": "Tron",
+              "long_name": "Tron (TRC-20)",
+              "description": "Убедитесь, что вы отправляете деньги в сети TRC-20",
+              "icon": "https://example.com/img/coins/trx.svg"
+            },
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Network"
+            }
+          },
+          "icon": {
+            "type": "string",
+            "example": "https://example.com/img/coins/trx.svg"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "Enabled",
+              "TemporaryDisabled",
+              "Deleted"
+            ],
+            "example": "Enabled",
+            "description": "Status of coin."
+          },
+          "decimals": {
+            "type": "number",
+            "description": "Number of decimal places"
+          }
+        },
+        "required": [
+          "currency",
+          "short_name",
+          "long_name",
+          "networks",
+          "icon",
+          "status",
+          "decimals"
+        ]
+      },
+      "CreateCoinDto": {
+        "type": "object",
+        "properties": {
+          "currency_id": {
+            "type": "string"
+          },
+          "short_name": {
+            "type": "string"
+          },
+          "long_name": {
+            "type": "string"
+          },
+          "network_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "icon": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "currency_id",
+          "short_name",
+          "long_name",
+          "network_ids",
+          "icon"
+        ]
+      },
+      "CreateMerchantDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          },
+          "logo": {
+            "type": "string"
+          },
+          "commission_payer": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "link",
+          "logo",
+          "commission_payer"
+        ]
+      },
+      "_Merchant": {
+        "type": "object",
+        "properties": {
+          "account": {
+            "type": "string",
+            "example": "Account ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of merchant",
+            "example": "John Doe"
+          },
+          "logo": {
+            "type": "string",
+            "description": "Logo of merchant"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "Enabled",
+              "Disabled"
+            ],
+            "description": "Status of merchant"
+          },
+          "api_key": {
+            "type": "string",
+            "description": "Api Key for merchant"
+          },
+          "pay_deposit_fee": {
+            "type": "number"
+          },
+          "finup_id": {
+            "type": "string"
+          },
+          "commission_payer": {
+            "type": "string",
+            "enum": [
+              "Merchant",
+              "Client"
+            ]
+          },
+          "id": {
+            "type": "string",
+            "description": "ID of merchant"
+          }
+        },
+        "required": [
+          "account",
+          "name",
+          "logo",
+          "status",
+          "pay_deposit_fee",
+          "finup_id",
+          "commission_payer",
+          "id"
+        ]
+      },
+      "CreateMerchantOutput": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/_Merchant"
+          }
+        },
+        "required": [
+          "result"
+        ]
+      },
+      "GetMerchantsOutput": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_Merchant"
+            }
+          }
+        },
+        "required": [
+          "result"
+        ]
+      },
+      "GetMerchantOutput": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/_Merchant"
+          }
+        },
+        "required": [
+          "result"
+        ]
+      },
+      "EditMerchantDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "logo": {
+            "type": "string"
+          },
+          "commission_payer": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "logo",
+          "commission_payer"
+        ]
+      },
+      "AddNewAddressDto": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string"
+          },
+          "coin_id": {
+            "type": "string"
+          },
+          "network_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "address",
+          "coin_id",
+          "network_id"
+        ]
+      },
+      "_address": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string"
+          },
+          "merchant": {
+            "type": "string",
+            "description": "Merchant ID"
+          },
+          "coin": {
+            "type": "string",
+            "description": "Coin ID"
+          },
+          "network": {
+            "$ref": "#/components/schemas/Network"
+          },
+          "account": {
+            "$ref": "#/components/schemas/Account"
+          },
+          "id": {
+            "type": "string",
+            "description": "ID of address"
+          }
+        },
+        "required": [
+          "address",
+          "merchant",
+          "coin",
+          "network",
+          "account",
+          "id"
+        ]
+      },
+      "CreateAddressOutput": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "$ref": "#/components/schemas/_address"
+          }
+        },
+        "required": [
+          "result"
+        ]
+      },
+      "EditMerchantAddressDto": {
+        "type": "object",
+        "properties": {
+          "coin_id": {
+            "type": "string"
+          },
+          "network_id": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "coin_id",
+          "network_id",
+          "address"
+        ]
+      },
+      "CreateAddressesOutput": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_address"
+            }
+          }
+        },
+        "required": [
+          "result"
+        ]
+      },
+      "InvoiceFilters": {
+        "type": "object",
+        "properties": {
+          "min_wallet_amount": {
+            "type": "number"
+          },
+          "min_invoice_amount": {
+            "type": "number"
+          },
+          "max_wallet_amount": {
+            "type": "number"
+          },
+          "max_invoice_amount": {
+            "type": "number"
+          },
+          "wallet_currency": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "statuses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "min_wallet_amount",
+          "min_invoice_amount",
+          "max_wallet_amount",
+          "max_invoice_amount",
+          "wallet_currency",
+          "statuses"
+        ]
+      },
+      "GetInvoicesByMerchantDto": {
+        "type": "object",
+        "properties": {
+          "pagination": {
+            "$ref": "#/components/schemas/PaginationV2Dto"
+          },
+          "filters": {
+            "$ref": "#/components/schemas/InvoiceFilters"
+          }
+        },
+        "required": [
+          "pagination",
+          "filters"
+        ]
+      },
+      "GetMerchantInvoicesOutput": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InvoiceGetOutput"
+            }
+          }
+        },
+        "required": [
+          "result"
+        ]
+      },
+      "ApplyCodeDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "account_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "account_id"
+        ]
+      },
+      "CreateNewCodeDto": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "maxUses": {
+            "type": "number"
+          },
+          "pricePlan": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "code",
+          "maxUses",
+          "pricePlan"
+        ]
+      }
+    }
+  }
+}

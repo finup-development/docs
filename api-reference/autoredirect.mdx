@@ -1,0 +1,38 @@
+---
+title: 'Auto Redirect'
+description: 'Auto Redirect is the automatic creation of an invoice by a redirect to a link with certain parameters.'
+---
+
+# How it works?
+You just have to redirect the user to a specific link and generate parameters for it. After that a new invoice will be automatically created and the user will be redirected to it.
+
+# Creating link
+> Base URL is https://api.finup.io/invoice/auto_redirect <br />
+> Method: GET
+
+### Query parameters for link:
+<ParamField query="merchant_id" type="string" required>
+  The filtering command used to sort through the users
+</ParamField>
+<ParamField query="amount" type="number" required>
+  The filtering command used to sort through the users
+</ParamField>
+<ParamField query="invoice_currency" type="string" required>
+  The filtering command used to sort through the users
+</ParamField>
+<ParamField query="wallet_currency" type="string" required>
+  The filtering command used to sort through the users
+</ParamField>
+<ParamField query="sign" type="string" required>
+  The SHA256 hash of this data: `"INVOICE_CURRENCY:AMOUNT:ORDER_ID:API_KEY"` (Unquoted and necessarily separated by a colon).
+  OrderId is the order number in your system. It is important that it should be unique.
+</ParamField>
+
+
+## FAQ
+<AccordionGroup>
+  <Accordion title="What if the SHA256 signature on the redirect already exists?">
+    In this case, the user will simply be redirected to an invoice with that signature.
+  </Accordion>
+</AccordionGroup>
+

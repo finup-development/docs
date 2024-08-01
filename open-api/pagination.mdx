@@ -1,0 +1,59 @@
+# How does pagination work?
+
+Pagination is only available in some endpoints. First you pass the pagination settings to the body of the request.
+
+> per_page - How many items will be on the page.
+>
+> page - Page to view.
+>
+> sort_by - Field to sort by.
+>
+> sort_direction - Sort direction (“asc”, “desc”).
+
+#### Example:
+```json
+{
+  "pagination": {
+    "per_page": 5,
+    "page": 1,
+    "sort_by": "created_at",
+    "sort_direction": "asc"
+  }
+}
+```
+In this example, we divide the data into pages of at most 5 elements and sort them by the `created_at` field in ascending order. If there are more than 5 elements, there will be several pages and we can switch them using page.
+
+The page count starts at 1. The response will also return information about pagination and the data to which pagination was applied in the "result" key. Example:
+```json
+{
+    "result": [
+        {
+            "id": "661000000000000000000",
+            "account_id": "661000000000000000000",
+            "source_id": "661000000000000000000",
+            "source": "Wallet",
+            "status": "Approved",
+            "side": "Credit",
+            "amount": 0.56,
+            "currency": "EUR",
+            "type": "Referral",
+            "created_at": "2024-04-25T09:56:16.726Z",
+            "updated_at": "2024-04-25T09:56:16.726Z",
+            "source_identifier": "EUR00000001"
+        },
+        "... 4 more items"
+    ],
+    "pagination": {
+        "current_page": 1,
+        "total_records": 807,
+        "total_pages": 162
+    }
+}
+```
+
+<Warning>
+    If you specify a page that is greater than `total_pages` (Index out of range), the result will be empty.
+
+    Also, if you don't pass the pagination object to the body, there will be no pagination information in the response
+    either.
+</Warning>

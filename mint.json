@@ -1,0 +1,148 @@
+{
+  "name": "Finup Pay",
+  "logo": {
+    "dark": "/logo/finup-wht.svg",
+    "light": "/logo/finup-blck.svg"
+  },
+  "api": {
+    "baseUrl": "https://api.finup.io/",
+    "auth": {
+      "method": "key",
+      "name": "Authorization"
+    }
+  },
+  "openapi": "api-reference/openapi.json",
+  "favicon": "/favicon.svg",
+  "colors": {
+    "primary": "#3B66FF",
+    "light": "#a9b7e8",
+    "dark": "#2c54de",
+    "anchors": {
+      "from": "#718ef5",
+      "to": "#1e47d9"
+    }
+  },
+  "topbarCtaButton": {
+    "name": "App",
+    "url": "https://wallet.finup.io/"
+  },
+  "tabs": [],
+  "anchors": [
+    {
+      "name": "Pay API Reference",
+      "url": "api-reference",
+      "icon": "rectangle-terminal"
+    },
+    {
+      "name": "Open Banking API Reference",
+      "url": "open-api",
+      "icon": "building-columns"
+    }
+  ],
+  "navigation": [
+    {
+      "group": "API Documentation",
+      "pages": [
+        "api-reference/introduction",
+        "api-reference/webhookExample",
+        "api-reference/autoredirect",
+        "api-reference/invoice-types"
+      ]
+    },
+    {
+      "group": "Open API Documentation",
+      "pages": [
+        "open-api/introduction",
+        "open-api/autodeposit",
+        "open-api/pagination",
+        {
+          "group": "User",
+          "pages": [
+            "open-api/user/get-user-by-himself"
+          ]
+        },
+        {
+          "group": "Accounts",
+          "pages": [
+            "open-api/account/get-all-accounts-by-supportadmin",
+            "open-api/account/get-specify-account-by-id",
+            "open-api/account/creating-new-account-in-existing-company"
+          ]
+        },
+        {
+          "group": "Cards",
+          "pages": [
+            "open-api/card/issue-cards",
+            "open-api/card/get-account-cards",
+            "open-api/card/get-specified-account-card",
+            "open-api/card/card-update",
+            "open-api/card/bulk-withdraw-from-cards",
+            "open-api/card/card-otp",
+            "open-api/card/card-autodeposit",
+            "open-api/card/card-delete-autodeposit",
+            "open-api/card/rate-issue-cards",
+            "open-api/account/get-card-type-by-account",
+            "open-api/card/cancel-cards",
+            "open-api/card/resume-cards",
+            "open-api/card/suspend-cards-by-supportadmin",
+            "open-api/card/reveal-cards"
+          ]
+        },
+        {
+          "group": "Members",
+          "pages": [
+            "open-api/member/get-account-members",
+            "open-api/member/invite-member",
+            "open-api/member/get-member",
+            "open-api/member/update-accounts-member",
+            "open-api/member/member-suspend",
+            "open-api/member/member-resume",
+            "open-api/member/set-member-disabled-status"
+          ]
+        },
+        {
+          "group": "Payments",
+          "pages": [
+            "open-api/payment/get-account-payments"
+          ]
+        },
+        {
+          "group": "Wallets",
+          "pages": [
+            "open-api/wallet/get-account-wallets"
+          ]
+        },
+        {
+          "group": "Merchants",
+          "pages": [
+            "open-api/merchant/get-merchants",
+            "open-api/merchant/get-merchant",
+            "open-api/merchant/create-new-merchant",
+            "open-api/merchant/edits-merchant",
+            "open-api/merchant/create-new-apikey-for-merchant",
+            "open-api/merchant/delete-merchant",
+            "open-api/merchant/get-list-of-all-merchant-addresses",
+            "open-api/merchant/add-new-p2p-address-for-merchant",
+            "open-api/merchant/delete-p2p-merchant-address",
+            "open-api/merchant/edit-p2p-merchant-address",
+            "open-api/merchant/get-invoices-by-merchant"
+          ]
+        }
+      ]
+    },
+    {
+      "group": "Coins",
+      "pages": [
+        "api-reference/endpoint/coin/get-coins"
+      ]
+    },
+    {
+      "group": "Invoice",
+      "pages": [
+        "api-reference/endpoint/invoice/delete-invoice",
+        "api-reference/endpoint/invoice/get-invoice",
+        "api-reference/endpoint/invoice/create-invoice"
+      ]
+    }
+  ]
+}
