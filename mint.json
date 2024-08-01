@@ -1,5 +1,5 @@
 {
-  "name": "Finup Pay",
+  "name": "Finup Documentation",
   "logo": {
     "dark": "/logo/finup-wht.svg",
     "light": "/logo/finup-blck.svg"
@@ -24,24 +24,24 @@
   },
   "topbarCtaButton": {
     "name": "App",
-    "url": "https://wallet.finup.io/"
+    "url": "https://www.finup.io/"
   },
   "tabs": [],
   "anchors": [
     {
-      "name": "Pay API Reference",
-      "url": "api-reference",
+      "name": "Merchant API",
+      "url": "merchant",
       "icon": "rectangle-terminal"
     },
     {
-      "name": "Open Banking API Reference",
-      "url": "open-api",
+      "name": "Banking API",
+      "url": "banking",
       "icon": "building-columns"
     }
   ],
   "navigation": [
     {
-      "group": "API Documentation",
+      "group": "Merchant API Documentation",
       "pages": [
         "api-reference/introduction",
         "api-reference/webhookExample",
@@ -50,7 +50,7 @@
       ]
     },
     {
-      "group": "Open API Documentation",
+      "group": "Banking API Documentation",
       "pages": [
         "open-api/introduction",
         "open-api/autodeposit",
