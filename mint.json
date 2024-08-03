@@ -56,17 +56,17 @@
         "open-api/autodeposit",
         "open-api/pagination",
         {
-          "group": "User",
-          "pages": [
-            "open-api/user/get-user-by-himself"
-          ]
-        },
-           {
       "group": "Auth",
       "pages": [
             "api-reference/endpoint/auth/local-sign-in-by-email-and-password"
       ]
     },
+        {
+          "group": "User",
+          "pages": [
+            "open-api/user/get-user-by-himself"
+          ]
+        },
         {
           "group": "Accounts",
           "pages": [
