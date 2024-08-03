@@ -61,6 +61,12 @@
             "open-api/user/get-user-by-himself"
           ]
         },
+           {
+      "group": "Auth",
+      "pages": [
+        "api-reference/endpoint/auth/login"
+      ]
+    },
         {
           "group": "Accounts",
           "pages": [
