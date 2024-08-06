@@ -2135,7 +2135,7 @@
       }
     },
     "/auth/refresh": {
-      "post": {
+      "patch": {
         "operationId": "AuthController_refreshToken",
         "summary": "Update access token",
         "parameters": [],
