@@ -41,8 +41,7 @@
   ],
   "navigation": [
     {
-      "group": "Merchant API Documentation",
-      "url": "merchant",
+      "group": "Merchant API",
       "pages": [
         "api-reference/introduction",
         "api-reference/webhookExample",
@@ -51,8 +50,7 @@
       ]
     },
     {
-      "group": "Banking API Documentation",
-      "url": "banking",
+      "group": "Banking API",
       "pages": [
         "open-api/introduction",
         "open-api/autodeposit",
