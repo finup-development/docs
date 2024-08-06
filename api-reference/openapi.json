@@ -4471,7 +4471,7 @@
       "IssueCardsDto": {
         "type": "object",
         "properties": {
-          "card_type": {
+          "card_typ": {
             "type": "string",
             "description": "ID of card_type"
           },
