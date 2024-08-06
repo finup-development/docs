@@ -56,7 +56,9 @@
         {
           "group": "Auth",
           "pages": [
-            "api-reference/endpoint/auth/local-sign-in-by-email-and-password"
+            "api-reference/endpoint/auth/local-sign-in-by-email-and-password",
+            "api-reference/endpoint/auth/update-access-token.mdx"
+
           ]
         },
         {
