@@ -30,12 +30,12 @@
   "anchors": [
     {
       "name": "Mrchant API",
-      "url": "merchant",
+      "url": "/merchant",
       "icon": "rectangle-terminal"
     },
     {
       "name": "Banking API",
-      "url": "banking",
+      "url": "/banking",
       "icon": "building-columns"
     }
   ],
