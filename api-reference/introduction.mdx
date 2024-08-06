@@ -36,7 +36,6 @@ import axios from 'axios';
   }
 
   const body = {
-    "wallet_currency": "USD",
     "invoice_amount": 100,
     "invoice_currency": "USD",
     "additional_data": {
@@ -51,23 +50,6 @@ import axios from 'axios';
 
   console.log(createInvoiceData.data); // { "account": "12312312", "invoiceAmount": 100, "type": "Invoice", ... }
 })
-```
-
-### Creating P2P invoice example
-This is the same as the previous example, only the type must be ``"P2P"``. Also make sure you add the correct addresses. Learn more about P2P invoices [here](/api-reference/invoice-types#p2p).
-```Javascript
-const body = {
-  "wallet_currency": "USD",
-  "invoice_amount": 100,
-  "invoice_currency": "USD",
-  "additional_data": {
-    "order-id": "zxcvbn" // Any your additional data
-  },
-  "url_return": "https://www.google.com/", // URL to which the "Back" button will lead to
-  "url_success": "https://www.youtube.com/watch?v=dQw4w9WgXcQ", // URL to which the user will be redirected upon successful payment
-  "type": "P2P"
-}
-// ...
 ```
 
 ### Get invoice example
