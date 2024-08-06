@@ -2605,14 +2605,6 @@
             }
           },
           {
-            "name": "wallet_currency",
-            "required": true,
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "sign",
             "required": true,
             "in": "query",
@@ -4149,18 +4141,9 @@
           "account": {
             "type": "string"
           },
-          "wallet_currency": {
-            "type": "string",
-            "example": "USD | EUR | RUB | UAH"
-          },
           "invoice_amount": {
             "type": "number",
             "example": 123
-          },
-          "wallet_amount": {
-            "type": "number",
-            "example": 123,
-            "description": "Amount to be credited to wallet (specified in wallet_currency)"
           },
           "invoice_currency": {
             "type": "string",
@@ -4220,9 +4203,7 @@
         },
         "required": [
           "account",
-          "wallet_currency",
           "invoice_amount",
-          "wallet_amount",
           "invoice_currency",
           "expected_amount",
           "merchant",
@@ -5204,18 +5185,9 @@
             "type": "string",
             "description": "AccountId"
           },
-          "wallet_currency": {
-            "type": "string",
-            "example": "USD | EUR | RUB | UAH"
-          },
           "invoice_amount": {
             "type": "number",
             "example": 123
-          },
-          "wallet_amount": {
-            "type": "number",
-            "example": 123,
-            "description": "Amount to be credited to wallet (specified in wallet_currency)"
           },
           "invoice_currency": {
             "type": "string",
@@ -5320,9 +5292,7 @@
         },
         "required": [
           "account",
-          "wallet_currency",
           "invoice_amount",
-          "wallet_amount",
           "invoice_currency",
           "url_status_webhook",
           "expected_amount",
@@ -5358,10 +5328,6 @@
           },
           "account_id": {
             "type": "string"
-          },
-          "wallet_currency": {
-            "type": "string",
-            "description": "Currency of the wallet to which the user's payment will be sent. (Only works if it is not a `P2P` invoice). At the moment, there are only USD, EUR, USDT wallets."
           },
           "invoice_amount": {
             "type": "number",
@@ -5404,7 +5370,6 @@
         "required": [
           "merchant_id",
           "account_id",
-          "wallet_currency",
           "invoice_amount",
           "invoice_currency",
           "additional_data",
@@ -5772,24 +5737,13 @@
       "InvoiceFilters": {
         "type": "object",
         "properties": {
-          "min_wallet_amount": {
-            "type": "number"
-          },
           "min_invoice_amount": {
-            "type": "number"
-          },
-          "max_wallet_amount": {
             "type": "number"
           },
           "max_invoice_amount": {
             "type": "number"
           },
-          "wallet_currency": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
+
           "statuses": {
             "type": "array",
             "items": {
@@ -5798,11 +5752,8 @@
           }
         },
         "required": [
-          "min_wallet_amount",
           "min_invoice_amount",
-          "max_wallet_amount",
           "max_invoice_amount",
-          "wallet_currency",
           "statuses"
         ]
       },
