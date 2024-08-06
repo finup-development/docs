@@ -29,19 +29,19 @@
   "tabs": [],
   "anchors": [
     {
-      "name": "Mrchant API",
-      "url": "/merchant",
+      "name": "Merchant API",
+      "url": "/merchant-api/introduction",
       "icon": "rectangle-terminal"
     },
     {
       "name": "Banking API",
-      "url": "/banking",
+      "url": "/banking-api/introduction",
       "icon": "building-columns"
     }
   ],
   "navigation": [
     {
-      "group": "Mrchant API Documentation",
+      "group": "Merchant API Documentation",
       "pages": [
         "api-reference/introduction",
         "api-reference/webhookExample",
