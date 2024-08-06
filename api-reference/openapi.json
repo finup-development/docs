@@ -4484,14 +4484,6 @@
           },
           "wallet_id": {
             "type": "string"
-          },
-          "deposit_amount": {
-            "type": "number",
-            "description": "Amount of replenishment at auto deposit. Read more about Auto Deposit [here](open-api/autodeposit)."
-          },
-          "bottom_amount": {
-            "type": "number",
-            "description": "Deposit threshold for auto deposit. Read more about Auto Deposit [here](open-api/autodeposit)."
           }
         },
         "required": [
@@ -4499,36 +4491,6 @@
           "name",
           "amount",
           "wallet_id"
-        ]
-      },
-      "AutoDepositEditDto": {
-        "type": "object",
-        "properties": {
-          "deposit_amount": {
-            "type": "number"
-          },
-          "bottom_amount": {
-            "type": "number"
-          }
-        },
-        "required": [
-          "deposit_amount",
-          "bottom_amount"
-        ]
-      },
-      "AutoDepositDisableDto": {
-        "type": "object",
-        "properties": {
-          "card_id": {
-            "type": "string"
-          },
-          "account_id": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "card_id",
-          "account_id"
         ]
       },
       "RateCardIssueDto": {
@@ -4711,15 +4673,6 @@
               "Suspended"
             ]
           },
-          "auto_deposit": {
-            "type": "boolean"
-          },
-          "bottom_amount": {
-            "type": "number"
-          },
-          "auto_deposit_amount": {
-            "type": "number"
-          },
           "digital_wallet": {
             "type": "boolean"
           }
@@ -4730,8 +4683,6 @@
           "avaliable_bank_limit",
           "used_bank_limit",
           "status",
-          "bottom_amount",
-          "auto_deposit_amount"
         ]
       },
       "GetAccountCards": {
