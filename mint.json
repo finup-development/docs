@@ -41,7 +41,7 @@
   ],
   "navigation": [
     {
-      "group": "Merchant API Documentation",
+      "group": "Merchant API",
       "pages": [
         "api-reference/introduction",
         "api-reference/webhookExample",
@@ -50,17 +50,17 @@
       ]
     },
     {
-      "group": "Banking API Documentation",
+      "group": "Banking API",
       "pages": [
         "open-api/introduction",
         "open-api/autodeposit",
         "open-api/pagination",
         {
-      "group": "Auth",
-      "pages": [
+          "group": "Auth",
+          "pages": [
             "api-reference/endpoint/auth/local-sign-in-by-email-and-password"
-      ]
-    },
+          ]
+        },
         {
           "group": "User",
           "pages": [
