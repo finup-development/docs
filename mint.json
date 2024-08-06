@@ -126,9 +126,6 @@
             "open-api/merchant/create-new-apikey-for-merchant",
             "open-api/merchant/delete-merchant",
             "open-api/merchant/get-list-of-all-merchant-addresses",
-            "open-api/merchant/add-new-p2p-address-for-merchant",
-            "open-api/merchant/delete-p2p-merchant-address",
-            "open-api/merchant/edit-p2p-merchant-address",
             "open-api/merchant/get-invoices-by-merchant"
           ]
         }
