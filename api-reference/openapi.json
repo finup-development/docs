@@ -3820,9 +3820,6 @@
             "type": "string",
             "description": "Low-level ID of the cardType"
           },
-          "bank_partner": {
-            "type": "string"
-          },
           "status": {
             "type": "string",
             "enum": [
@@ -3878,7 +3875,6 @@
         },
         "required": [
           "id",
-          "bank_partner",
           "status",
           "BIN",
           "category",
