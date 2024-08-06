@@ -2150,9 +2150,19 @@
             }
           }
         },
-        "responses": {
+           "responses": {
           "201": {
-            "description": ""
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignInOutput"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Wrong refresh token"
           }
         },
         "tags": [
