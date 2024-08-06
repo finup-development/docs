@@ -56,32 +56,12 @@
       "pages": [
         "open-api/introduction",
         "open-api/autodeposit",
-        "open-api/pagination"
-      ]
-    },
-    {
-      "group": "Auth",
-      "pages": [
-        "api-reference/endpoint/auth/local-sign-in-by-email-and-password"
-      ]
-    },
-    {
-      "group": "User",
-      "pages": [
-        "open-api/user/get-user-by-himself"
-      ]
-    },
-    {
-      "group": "Accounts",
-      "pages": [
+        "open-api/pagination",
+        "api-reference/endpoint/auth/local-sign-in-by-email-and-password",
+        "open-api/user/get-user-by-himself",
         "open-api/account/get-all-accounts-by-supportadmin",
         "open-api/account/get-specify-account-by-id",
-        "open-api/account/creating-new-account-in-existing-company"
-      ]
-    },
-    {
-      "group": "Cards",
-      "pages": [
+        "open-api/account/creating-new-account-in-existing-company",
         "open-api/card/issue-cards",
         "open-api/card/get-account-cards",
         "open-api/card/get-specified-account-card",
@@ -95,36 +75,16 @@
         "open-api/card/cancel-cards",
         "open-api/card/resume-cards",
         "open-api/card/suspend-cards-by-supportadmin",
-        "open-api/card/reveal-cards"
-      ]
-    },
-    {
-      "group": "Members",
-      "pages": [
+        "open-api/card/reveal-cards",
         "open-api/member/get-account-members",
         "open-api/member/invite-member",
         "open-api/member/get-member",
         "open-api/member/update-accounts-member",
         "open-api/member/member-suspend",
         "open-api/member/member-resume",
-        "open-api/member/set-member-disabled-status"
-      ]
-    },
-    {
-      "group": "Payments",
-      "pages": [
-        "open-api/payment/get-account-payments"
-      ]
-    },
-    {
-      "group": "Wallets",
-      "pages": [
-        "open-api/wallet/get-account-wallets"
-      ]
-    },
-    {
-      "group": "Merchants",
-      "pages": [
+        "open-api/member/set-member-disabled-status",
+        "open-api/payment/get-account-payments",
+        "open-api/wallet/get-account-wallets",
         "open-api/merchant/get-merchants",
         "open-api/merchant/get-merchant",
         "open-api/merchant/create-new-merchant",
