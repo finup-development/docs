@@ -30,18 +30,19 @@
   "anchors": [
     {
       "name": "Mrchant API",
-      "url": "/merchant",
+      "url": "merchant",
       "icon": "rectangle-terminal"
     },
     {
       "name": "Banking API",
-      "url": "/banking",
+      "url": "banking",
       "icon": "building-columns"
     }
   ],
   "navigation": [
     {
       "group": "Mrchant API Documentation",
+      "url": "merchant",
       "pages": [
         "api-reference/introduction",
         "api-reference/webhookExample",
@@ -51,6 +52,7 @@
     },
     {
       "group": "Banking API Documentation",
+      "url": "banking",
       "pages": [
         "open-api/introduction",
         "open-api/autodeposit",
