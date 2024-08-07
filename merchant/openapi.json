@@ -1861,6 +1861,7 @@
         "operationId": "AuthController_signInLocal",
         "summary": "Local sign in by email and password",
         "parameters": [],
+        "security": [],
         "requestBody": {
           "required": true,
           "description": "Authentication data",
@@ -1869,7 +1870,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "emai": {
+                  "email": {
                     "type": "string"
                   },
                   "password": {
@@ -1901,8 +1902,7 @@
         },
         "tags": [
           "Auth"
-        ],
-        "security": []
+        ]
       }
     },
     "/auth/signup": {
