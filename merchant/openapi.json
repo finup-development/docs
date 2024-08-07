@@ -1870,7 +1870,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "email": {
+                  "emai": {
                     "type": "string"
                   },
                   "password": {
