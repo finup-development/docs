@@ -1410,8 +1410,30 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/IssueCardsDto"
-              }
+        "type": "object",
+        "properties": {
+          "card_typ": {
+            "type": "string",
+            "description": "ID of card_type"
+          },
+          "name": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Number of cards to be created"
+          },
+          "wallet_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "card_type",
+          "name",
+          "amount",
+          "wallet_id"
+        ]
+      }
             }
           }
         },
@@ -4604,7 +4626,7 @@
           "linked_at",
           "avaliable_bank_limit",
           "used_bank_limit",
-          "status",
+          "status"
         ]
       },
       "GetAccountCards": {
