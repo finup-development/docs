@@ -11,7 +11,7 @@
       "name": "Authorization"
     }
   },
-  "openapi": "api-reference/openapi.json",
+  "openapi": "merchant/openapi.json",
   "favicon": "/favicon.svg",
   "colors": {
     "primary": "#3B66FF",
@@ -30,12 +30,12 @@
   "anchors": [
     {
       "name": "Merchant API",
-      "url": "api-reference",
+      "url": "merchant",
       "icon": "rectangle-terminal"
     },
     {
       "name": "Banking API",
-      "url": "open-api",
+      "url": "banking",
       "icon": "building-columns"
     }
   ],
@@ -43,90 +43,90 @@
     {
       "group": "Merchant API",
       "pages": [
-        "api-reference/introduction",
-        "api-reference/webhookExample",
-        "api-reference/invoice-types"
+        "merchant/introduction",
+        "merchant/webhookExample",
+        "merchant/invoice-types"
       ]
     },
     {
       "group": "Banking API",
       "pages": [
-        "open-api/introduction",
-        "open-api/pagination",
+        "banking/introduction",
+        "banking/pagination",
         {
           "group": "Auth",
           "pages": [
-            "open-api/auth/local-sign-in-by-email-and-password",
-            "open-api/auth/update-access-token"
+            "banking/auth/local-sign-in-by-email-and-password",
+            "banking/auth/update-access-token"
 
           ]
         },
         {
           "group": "User",
           "pages": [
-            "open-api/user/get-user-by-himself"
+            "banking/user/get-user-by-himself"
           ]
         },
         {
           "group": "Accounts",
           "pages": [
-            "open-api/account/get-all-accounts-by-supportadmin",
-            "open-api/account/get-specify-account-by-id",
-            "open-api/account/creating-new-account-in-existing-company"
+            "banking/account/get-all-accounts-by-supportadmin",
+            "banking/account/get-specify-account-by-id",
+            "banking/account/creating-new-account-in-existing-company"
           ]
         },
         {
           "group": "Cards",
           "pages": [
-            "open-api/card/issue-cards",
-            "open-api/card/get-account-cards",
-            "open-api/card/get-specified-account-card",
-            "open-api/card/card-update",
-            "open-api/card/bulk-withdraw-from-cards",
-            "open-api/card/card-otp",
-            "open-api/card/rate-issue-cards",
-            "open-api/account/get-card-type-by-account",
-            "open-api/card/cancel-cards",
-            "open-api/card/resume-cards",
-            "open-api/card/suspend-cards-by-supportadmin",
-            "open-api/card/reveal-cards"
+            "banking/card/issue-cards",
+            "banking/card/get-account-cards",
+            "banking/card/get-specified-account-card",
+            "banking/card/card-update",
+            "banking/card/bulk-withdraw-from-cards",
+            "banking/card/card-otp",
+            "banking/card/rate-issue-cards",
+            "banking/account/get-card-type-by-account",
+            "banking/card/cancel-cards",
+            "banking/card/resume-cards",
+            "banking/card/suspend-cards-by-supportadmin",
+            "banking/card/reveal-cards"
           ]
         },
         {
           "group": "Members",
           "pages": [
-            "open-api/member/get-account-members",
-            "open-api/member/invite-member",
-            "open-api/member/get-member",
-            "open-api/member/update-accounts-member",
-            "open-api/member/member-suspend",
-            "open-api/member.member-resume",
-            "open-api/member/set-member-disabled-status"
+            "banking/member/get-account-members",
+            "banking/member/invite-member",
+            "banking/member/get-member",
+            "banking/member/update-accounts-member",
+            "banking/member/member-suspend",
+            "banking/member.member-resume",
+            "banking/member/set-member-disabled-status"
           ]
         },
         {
           "group": "Payments",
           "pages": [
-            "open-api/payment/get-account-payments"
+            "banking/payment/get-account-payments"
           ]
         },
         {
           "group": "Wallets",
           "pages": [
-            "open-api/wallet/get-account-wallets"
+            "banking/wallet/get-account-wallets"
           ]
         },
         {
           "group": "Merchants",
           "pages": [
-            "open-api/merchant/get-merchants",
-            "open-api/merchant/get-merchant",
-            "open-api/merchant/create-new-merchant",
-            "open-api/merchant/edits-merchant",
-            "open-api/merchant/create-new-apikey-for-merchant",
-            "open-api/merchant/delete-merchant",
-            "open-api/merchant/get-list-of-all-merchant-addresses",
-            "open-api/merchant/get-invoices-by-merchant"
+            "banking/merchant/get-merchants",
+            "banking/merchant/get-merchant",
+            "banking/merchant/create-new-merchant",
+            "banking/merchant/edits-merchant",
+            "banking/merchant/create-new-apikey-for-merchant",
+            "banking/merchant/delete-merchant",
+            "banking/merchant/get-list-of-all-merchant-addresses",
+            "banking/merchant/get-invoices-by-merchant"
           ]
         }
       ]
@@ -134,15 +134,15 @@
     {
       "group": "Coins",
       "pages": [
-        "api-reference/endpoint/coin/get-coins"
+        "merchant/endpoint/coin/get-coins"
       ]
     },
     {
       "group": "Invoice",
       "pages": [
-        "api-reference/endpoint/invoice/delete-invoice",
-        "api-reference/endpoint/invoice/get-invoice",
-        "api-reference/endpoint/invoice/create-invoice"
+        "merchant/endpoint/invoice/delete-invoice",
+        "merchant/endpoint/invoice/get-invoice",
+        "merchant/endpoint/invoice/create-invoice"
       ]
     }
   ]
