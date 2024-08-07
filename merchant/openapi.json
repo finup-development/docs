@@ -1856,55 +1856,6 @@
         ]
       }
     },
-    "/auth/login": {
-      "post": {
-        "operationId": "AuthController_signInLocal",
-        "summary": "Local sign in by email and password",
-        "parameters": [],
-        "security": [],
-        "requestBody": {
-          "required": true,
-          "description": "Authentication data",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "emai": {
-                    "type": "string"
-                  },
-                  "password": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "email",
-                  "password"
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/SignInOutput"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Wrong email or password exception"
-          }
-        },
-        "tags": [
-          "Auth"
-        ]
-      }
-    },
     "/auth/signup": {
       "post": {
         "operationId": "AuthController_signUpLocal",
