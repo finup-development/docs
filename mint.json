@@ -29,7 +29,7 @@
   "tabs": [],
   "anchors": [
     {
-      "name": "Mrchant API",
+      "name": "Merchant API",
       "url": "api-reference",
       "icon": "rectangle-terminal"
     },
@@ -41,7 +41,7 @@
   ],
   "navigation": [
     {
-      "group": "Mrchant API",
+      "group": "Merchant API",
       "pages": [
         "api-reference/introduction",
         "api-reference/webhookExample",
