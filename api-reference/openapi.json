@@ -1412,7 +1412,7 @@
               "schema": {
         "type": "object",
         "properties": {
-          "card_typ": {
+          "card_type": {
             "type": "string",
             "description": "ID of card_type"
           },
