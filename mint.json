@@ -111,6 +111,13 @@
           ]
         },
         {
+          "group": "Transfer",
+          "pages": [
+            "banking/account/account-transfer-rate",
+            "banking/account/account-transfer-confirmation"
+          ]
+        },
+        {
           "group": "Wallets",
           "pages": [
             "banking/wallet/get-account-wallets"
