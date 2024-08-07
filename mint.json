@@ -78,7 +78,6 @@
         {
           "group": "Cards",
           "pages": [
-            "open-api/card/issue-cards",
             "open-api/card/get-account-cards",
             "open-api/card/get-specified-account-card",
             "open-api/card/card-update",
