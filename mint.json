@@ -56,18 +56,8 @@
         {
           "group": "Auth",
           "pages": [
-            {
-              "path": "banking/auth/local-sign-in-by-email-and-password",
-              "auth": {
-                "method": "none"
-              }
-            },
-            {
-              "path": "banking/auth/update-access-token",
-              "auth": {
-                "method": "none"
-              }
-            }
+            "banking/auth/local-sign-in-by-email-and-password",
+            "banking/auth/update-access-token"
           ]
         },
         {
