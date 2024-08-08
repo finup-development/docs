@@ -56,15 +56,11 @@
         {
           "group": "Auth",
           "pages": [
-            {
-              "path": "banking/auth/local-sign-in-by-email-and-password",
-              "auth": false
-            },
-            {
-              "path": "banking/auth/update-access-token",
-              "auth": false
-            }
-          ]
+            "banking/auth/local-sign-in-by-email-and-password",
+            "banking/auth/update-access-token"
+
+          ],
+          "auth": false
         },
         {
           "group": "User",
