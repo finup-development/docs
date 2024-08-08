@@ -5,7 +5,11 @@
     "light": "/logo/finup-blck.svg"
   },
   "api": {
-    "baseUrl": "https://api.finup.io/"
+    "baseUrl": "https://api.finup.io/",
+    "auth": {
+      "method": "key",
+      "name": "Authorization"
+    }
   },
   "openapi": "merchant/openapi.json",
   "favicon": "/favicon.svg",
@@ -51,6 +55,7 @@
         "banking/pagination",
         {
           "group": "Auth",
+          "auth": {},
           "pages": [
             "banking/auth/local-sign-in-by-email-and-password",
             "banking/auth/update-access-token"
