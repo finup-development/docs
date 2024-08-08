@@ -59,8 +59,7 @@
             "banking/auth/local-sign-in-by-email-and-password",
             "banking/auth/update-access-token"
 
-          ],
-          "auth": false
+          ]
         },
         {
           "group": "User",
