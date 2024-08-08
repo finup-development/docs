@@ -54,11 +54,15 @@
         "banking/introduction",
         "banking/pagination",
         {
+          "api": {
+            "auth": {
+              "method": "none"
+            }
+          },
           "group": "Auth",
           "pages": [
             "banking/auth/local-sign-in-by-email-and-password",
             "banking/auth/update-access-token"
-
           ]
         },
         {
