@@ -55,7 +55,7 @@
         "banking/pagination",
         {
           "group": "Auth",
-          "endpoints": [
+          "pages": [
             {
               "path": "banking/auth/local-sign-in-by-email-and-password",
               "auth": {
