@@ -1438,8 +1438,15 @@
           }
         },
         "responses": {
-          "201": {
-            "description": ""
+          "200": {
+            "description": "Returns issued vcards",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IssueCardsOutput"
+                }
+              }
+            }
           }
         },
         "tags": [
@@ -4553,6 +4560,82 @@
           "pagination"
         ]
       },
+         "_IssueCardOutput": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID of the schema"
+          },
+          "member": {
+            "type": "string"
+          },
+          "user": {
+            "type": "string"
+          },
+          "account": {
+            "type": "string"
+          },
+          "card_type": {
+            "type": "string"
+          },
+          "bank_card_id": {
+            "type": "string"
+          },
+          "PAN": {
+            "type": "string"
+          },
+          "EXP": {
+            "type": "string"
+          },
+          "CVV": {
+            "type": "string"
+          },
+          "masked_PAN": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "balance": {
+            "type": "number",
+            "default": 0
+          },
+          "deposit": {
+            "type": "number",
+            "default": 0
+          },
+          "withdraw": {
+            "type": "number",
+            "default": 0
+          },
+          "spent": {
+            "type": "number",
+            "default": 0
+          },
+          "status_bank": {
+            "type": "string"
+          },
+          "avaliable_bank_limit": {
+            "type": "number"
+          },
+          "used_bank_limit": {
+            "type": "number"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "Enabled",
+              "Processing",
+              "Canceled",
+              "Suspended"
+            ]
+          },
+          "digital_wallet": {
+            "type": "boolean"
+          }
+        }
+      },
       "_GetCardOutput": {
         "type": "object",
         "properties": {
@@ -4641,6 +4724,20 @@
           "avaliable_bank_limit",
           "used_bank_limit",
           "status"
+        ]
+      },
+      "IssueCardsOutput": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/_IssueCardOutput"
+            }
+          }
+        },
+        "required": [
+          "result"
         ]
       },
       "GetAccountCards": {
