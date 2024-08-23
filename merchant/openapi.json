@@ -1906,7 +1906,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "emai": {
+                  "email": {
                     "type": "string"
                   },
                   "password": {
