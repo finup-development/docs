@@ -1490,7 +1490,7 @@
         ]
       }
     },
-    "/cards/suspend": {
+    "/cards/freeze": {
       "patch": {
         "operationId": "CardController_suspendCards",
         "summary": "Suspend cards by support/admin",
@@ -1521,7 +1521,7 @@
         ]
       }
     },
-    "/cards/resume": {
+    "/cards/unfreeze": {
       "patch": {
         "operationId": "CardController_resumeCard",
         "summary": "Resume cards",
