@@ -29,25 +29,12 @@
   "tabs": [],
   "anchors": [
     {
-      "name": "Merchant API",
-      "url": "merchant",
-      "icon": "rectangle-terminal"
-    },
-    {
       "name": "Banking API",
       "url": "banking",
       "icon": "building-columns"
     }
   ],
   "navigation": [
-    {
-      "group": "Merchant API",
-      "pages": [
-        "merchant/introduction",
-        "merchant/webhookExample",
-        "merchant/invoice-types"
-      ]
-    },
     {
       "group": "Banking API",
       "pages": [
