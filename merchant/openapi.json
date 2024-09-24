@@ -48,11 +48,6 @@
         },
         "tags": [
           "User"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -3989,12 +3984,12 @@
       "AccountCreateDto": {
         "type": "object",
         "properties": {
-          "account_nam": {
+          "account_name": {
             "type": "string"
           }
         },
         "required": [
-          "account_nam"
+          "account_name"
         ]
       },
       "StatmentFilters": {
