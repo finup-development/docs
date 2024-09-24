@@ -3222,7 +3222,7 @@
     "securitySchemes": {
       "bearer": {
         "scheme": "bearer",
-        "bearerFormat": "API_KEY",
+        "bearerFormat": "JWT",
         "type": "http"
       }
     },
