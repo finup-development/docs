@@ -3219,6 +3219,13 @@
   "tags": [],
   "servers": [],
   "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "API_KEY",
+        "type": "http"
+      }
+    },
     "schemas": {
       "UserReturnTypeOutput": {
         "type": "object",
@@ -3978,7 +3985,7 @@
       "AccountCreateDto": {
         "type": "object",
         "properties": {
-          "account_name": {
+          "account_nam": {
             "type": "string"
           }
         },
