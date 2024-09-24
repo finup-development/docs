@@ -14,11 +14,11 @@ The Open API allows you to interact with Finup services and automate or integrat
 
 ## Authentication
 
-Most endpoints are authenticated using `Bearer tokens` that are selected from headers.
+Most endpoints are authenticated using `Api key` that are selected from headers.
 Also, in some endpoints you need to pass the account_id. A list of all accounts of the current user can be found in [/accounts](/open-api/account/get-all-accounts-by-supportadmin).
 
 ```json
 {
-  "Authorization": "Bearer eyJhbGc..."
+  "api_key": "Bearer d5f3b6a3d4e6f1..."
 }
 ```
