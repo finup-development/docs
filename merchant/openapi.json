@@ -73,11 +73,6 @@
         },
         "tags": [
           "User"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -113,11 +108,6 @@
         },
         "tags": [
           "User"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -150,11 +140,6 @@
         },
         "tags": [
           "Member"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -181,11 +166,6 @@
         },
         "tags": [
           "Member"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -212,11 +192,6 @@
         },
         "tags": [
           "Member"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -259,11 +234,6 @@
         },
         "tags": [
           "Member"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -299,11 +269,6 @@
         },
         "tags": [
           "Member"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -339,11 +304,6 @@
         },
         "tags": [
           "Member"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -368,11 +328,6 @@
         },
         "tags": [
           "Member"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -397,11 +352,6 @@
         },
         "tags": [
           "Member"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -426,11 +376,6 @@
         },
         "tags": [
           "Member"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -464,11 +409,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -512,11 +452,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -550,11 +485,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -581,11 +511,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -612,11 +537,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -643,11 +563,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -680,11 +595,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -711,11 +621,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -742,11 +647,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -773,11 +673,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -813,11 +708,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -853,11 +743,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -882,11 +767,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -922,11 +802,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -969,11 +844,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1007,11 +877,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1041,11 +906,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1088,11 +948,6 @@
         },
         "tags": [
           "Payment"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1129,11 +984,6 @@
         },
         "tags": [
           "Payment"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1176,11 +1026,6 @@
         },
         "tags": [
           "Payment"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1319,11 +1164,6 @@
         },
         "tags": [
           "Currecncy"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1446,11 +1286,6 @@
         },
         "tags": [
           "Card"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1477,11 +1312,6 @@
         },
         "tags": [
           "Card"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1508,11 +1338,6 @@
         },
         "tags": [
           "Card"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1539,11 +1364,6 @@
         },
         "tags": [
           "Card"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1570,11 +1390,6 @@
         },
         "tags": [
           "Card"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1589,11 +1404,6 @@
         },
         "tags": [
           "Card"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1620,11 +1430,6 @@
         },
         "tags": [
           "Card"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1651,11 +1456,6 @@
         },
         "tags": [
           "Card"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1699,11 +1499,6 @@
         },
         "tags": [
           "Card"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1739,11 +1534,6 @@
         },
         "tags": [
           "Card"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1775,11 +1565,6 @@
         },
         "tags": [
           "Card"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1812,11 +1597,6 @@
         },
         "tags": [
           "Card"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1850,11 +1630,6 @@
         },
         "tags": [
           "Card"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -2149,11 +1924,6 @@
         },
         "tags": [
           "Company"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -2169,11 +1939,6 @@
         },
         "tags": [
           "Company"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -2196,11 +1961,6 @@
         },
         "tags": [
           "Company"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -2226,11 +1986,6 @@
         },
         "tags": [
           "Company"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -2334,11 +2089,6 @@
         },
         "tags": [
           "Wallet"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -2704,11 +2454,6 @@
         },
         "tags": [
           "Merchant"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       },
       "get": {
@@ -2762,11 +2507,6 @@
         },
         "tags": [
           "Merchant"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       },
       "patch": {
@@ -2807,11 +2547,6 @@
         },
         "tags": [
           "Merchant"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -2874,11 +2609,6 @@
         },
         "tags": [
           "Merchant"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -2921,11 +2651,6 @@
         },
         "tags": [
           "Merchant"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       },
       "get": {
@@ -2955,11 +2680,6 @@
         },
         "tags": [
           "Merchant"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -2984,11 +2704,6 @@
         },
         "tags": [
           "Merchant"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       },
       "patch": {
@@ -3029,11 +2744,6 @@
         },
         "tags": [
           "Merchant"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
