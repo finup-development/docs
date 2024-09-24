@@ -3219,13 +3219,6 @@
   "tags": [],
   "servers": [],
   "components": {
-    "securitySchemes": {
-      "bearer": {
-        "scheme": "bearer",
-        "bearerFormat": "API_KEY",
-        "type": "http"
-      }
-    },
     "schemas": {
       "UserReturnTypeOutput": {
         "type": "object",
