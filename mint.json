@@ -8,7 +8,7 @@
     "baseUrl": "https://api.finup.io/",
     "auth": {
       "method": "key",
-      "name": "Authorization"
+      "name": "Api key"
     }
   },
   "openapi": "merchant/openapi.json",
