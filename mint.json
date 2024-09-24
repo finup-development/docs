@@ -54,13 +54,6 @@
         "banking/introduction",
         "banking/pagination",
         {
-          "group": "Auth",
-          "pages": [
-            "banking/auth/local-sign-in-by-email-and-password",
-            "banking/auth/update-access-token"
-          ]
-        },
-        {
           "group": "User",
           "pages": [
             "banking/user/get-user-by-himself"
