@@ -3989,12 +3989,12 @@
       "AccountCreateDto": {
         "type": "object",
         "properties": {
-          "account_name": {
+          "account_nam": {
             "type": "string"
           }
         },
         "required": [
-          "account_name"
+          "account_nam"
         ]
       },
       "StatmentFilters": {
