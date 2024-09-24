@@ -8,7 +8,7 @@
     "baseUrl": "https://api.finup.io/",
     "auth": {
       "method": "key",
-      "name": "Api key"
+      "name": "api_key"
     }
   },
   "openapi": "merchant/openapi.json",
@@ -113,19 +113,6 @@
           "group": "Wallets",
           "pages": [
             "banking/wallet/get-account-wallets"
-          ]
-        },
-        {
-          "group": "Merchants",
-          "pages": [
-            "banking/merchant/get-merchants",
-            "banking/merchant/get-merchant",
-            "banking/merchant/create-new-merchant",
-            "banking/merchant/edits-merchant",
-            "banking/merchant/create-new-apikey-for-merchant",
-            "banking/merchant/delete-merchant",
-            "banking/merchant/get-list-of-all-merchant-addresses",
-            "banking/merchant/get-invoices-by-merchant"
           ]
         }
       ]
