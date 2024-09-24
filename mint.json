@@ -5,7 +5,11 @@
     "light": "/logo/finup-blck.svg"
   },
   "api": {
-    "baseUrl": "https://api.finup.io/"
+    "baseUrl": "https://api.finup.io/",
+    "auth": {
+      "method": "key",
+      "name": "Api key"
+    }
   },
   "openapi": "merchant/openapi.json",
   "favicon": "/favicon.svg",
