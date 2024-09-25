@@ -4287,7 +4287,7 @@
           "EXP": {
             "type": "string"
           },
-          "masked_card_pan": {
+          "masked_PAN": {
             "type": "string"
           },
           "name": {
@@ -4342,7 +4342,7 @@
           "EXP": {
             "type": "string"
           },
-          "masked_card_pan": {
+          "masked_PAN": {
             "type": "string"
           },
           "name": {
