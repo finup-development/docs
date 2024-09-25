@@ -1247,9 +1247,9 @@
               "schema": {
         "type": "object",
         "properties": {
-          "card_type": {
+          "bin_id": {
             "type": "string",
-            "description": "ID of card_type"
+            "description": "ID of bin"
           },
           "name": {
             "type": "string"
@@ -1263,7 +1263,7 @@
           }
         },
         "required": [
-          "card_type",
+          "bin_id",
           "name",
           "amount",
           "wallet_id"
@@ -4143,7 +4143,7 @@
         "properties": {
           "card_typ": {
             "type": "string",
-            "description": "ID of card_type"
+            "description": "ID of bin_id"
           },
           "name": {
             "type": "string"
@@ -4157,7 +4157,7 @@
           }
         },
         "required": [
-          "card_type",
+          "bin_id",
           "name",
           "amount",
           "wallet_id"
@@ -4169,13 +4169,13 @@
           "wallet_id": {
             "type": "string"
           },
-          "card_type": {
+          "bin_id": {
             "type": "string"
           }
         },
         "required": [
           "wallet_id",
-          "card_type"
+          "bin_id"
         ]
       },
       "BlockCardDto": {
