@@ -4281,22 +4281,13 @@
           "account": {
             "type": "string"
           },
-          "card_type": {
-            "type": "string"
-          },
-          "bank_card_id": {
-            "type": "string"
-          },
-          "PAN": {
+          "bin_id": {
             "type": "string"
           },
           "EXP": {
             "type": "string"
           },
-          "CVV": {
-            "type": "string"
-          },
-          "masked_PAN": {
+          "masked_card_pan": {
             "type": "string"
           },
           "name": {
@@ -4318,15 +4309,6 @@
             "type": "number",
             "default": 0
           },
-          "status_bank": {
-            "type": "string"
-          },
-          "avaliable_bank_limit": {
-            "type": "number"
-          },
-          "used_bank_limit": {
-            "type": "number"
-          },
           "status": {
             "type": "string",
             "enum": [
@@ -4335,9 +4317,6 @@
               "Canceled",
               "Suspended"
             ]
-          },
-          "digital_wallet": {
-            "type": "boolean"
           }
         }
       },
@@ -4348,10 +4327,6 @@
             "type": "string",
             "description": "ID of the schema"
           },
-          "linked_at": {
-            "format": "date-time",
-            "type": "string"
-          },
           "member": {
             "type": "string"
           },
@@ -4361,25 +4336,13 @@
           "account": {
             "type": "string"
           },
-          "card_type": {
-            "type": "string"
-          },
-          "bank_card_id": {
-            "type": "string"
-          },
-          "PAN": {
+          "bin_id": {
             "type": "string"
           },
           "EXP": {
             "type": "string"
           },
-          "CVV": {
-            "type": "string"
-          },
-          "masked_PAN": {
-            "type": "string"
-          },
-          "finup_id": {
+          "masked_card_pan": {
             "type": "string"
           },
           "name": {
@@ -4401,15 +4364,6 @@
             "type": "number",
             "default": 0
           },
-          "status_bank": {
-            "type": "string"
-          },
-          "avaliable_bank_limit": {
-            "type": "number"
-          },
-          "used_bank_limit": {
-            "type": "number"
-          },
           "status": {
             "type": "string",
             "enum": [
@@ -4418,9 +4372,6 @@
               "Canceled",
               "Suspended"
             ]
-          },
-          "digital_wallet": {
-            "type": "boolean"
           }
         },
         "required": [
