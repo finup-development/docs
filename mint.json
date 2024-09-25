@@ -63,7 +63,6 @@
             "banking/card/card-update",
             "banking/card/bulk-withdraw-from-cards",
             "banking/card/card-otp",
-            "banking/card/rate-issue-cards",
             "banking/account/get-card-type-by-account",
             "banking/card/cancel-cards",
             "banking/card/resume-cards",
