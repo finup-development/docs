@@ -1,0 +1,6 @@
+{
+  "name": "My API Docs",
+  "api": {
+    "openapi": "swagger.json"
+  }
+}
