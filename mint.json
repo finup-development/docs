@@ -9,8 +9,5 @@
       "group": "API Reference",
       "pages": ["api-docs.md"]
     }
-  ],
-  "api": {
-    "openapi": "swagger.json"
-  }
+  ]
 }
