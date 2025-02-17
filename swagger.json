@@ -1,0 +1,1499 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/accounts/{account_id}/transactions": {
+      "post": {
+        "operationId": "AccountController_getAccountPayments",
+        "summary": "Get account payments",
+        "parameters": [
+          {
+            "name": "account_id",
+            "required": true,
+            "in": "path",
+            "description": "Id of account",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API key for authentication",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAccountPaymentsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "result": [
+                      {
+                        "id": "65fc4e136fb5c06281ac5e4e",
+                        "account_id": "622c22cf766d7a2c1fafe2d6",
+                        "source_id": "65fc31cf766d7a2c1fafe2e3",
+                        "source": "Wallet",
+                        "status": "Approved",
+                        "side": "Credit",
+                        "amount": 150,
+                        "currency": "USD",
+                        "type": "ExternalTransfer",
+                        "created_at": "2024-03-21T15:11:15.052Z",
+                        "updated_at": "2024-09-05T23:53:41.885Z",
+                        "source_identifier": "USD2156306518",
+                        "external_transfer_data": {
+                          "payment_method": "65e73213018090468561a60c",
+                          "external_transfer_id": "65fc4e11895eacd8b005e71c",
+                          "sub_type": "External",
+                          "hash": "0x43b4501753829064ecee79b48c9cc94f16da2b2858b3fc4d0ea682d75ada579",
+                          "address_to": "0x41196b2hd983A909a84837A311639cdf57E9f"
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 401,
+                    "error_message": "Unauthorized"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 404,
+                    "error_message": "Account not fot found"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/accounts/{account_id}": {
+      "get": {
+        "operationId": "AccountController_getAccount",
+        "summary": "Get specify account by id",
+        "parameters": [
+          {
+            "name": "account_id",
+            "required": true,
+            "in": "path",
+            "description": "Id of account",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API key for authentication",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "result": {
+                      "id": "65ac22cf346d7a2c1fafe2d6",
+                      "name": "FT I BOGDAN",
+                      "member_id": "65fc3211124d7a2c1fafecc1",
+                      "finup_id": "1987516235",
+                      "decline_rate": 0,
+                      "fees": {
+                        "deposit_fee": 0.03,
+                        "universal_issuing_fee": 3,
+                        "universal_decline_fee": 0.025,
+                        "transaction_fee": 0,
+                        "universal_transaction_fee": 0,
+                        "universal_deposit_fee": 0,
+                        "universal_withdraw_fee": 0,
+                        "platinum_issuing_fee": 0,
+                        "platinum_decline_fee": 0,
+                        "platinum_transaction_fee": 0,
+                        "platinum_deposit_fee": 0,
+                        "platinum_withdraw_fee": 0,
+                        "platinum_monthly_fee": 0
+                      },
+                      "wallet_balance": 0,
+                      "verification_status": "Allowed",
+                      "card_balance": 5
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 401,
+                    "error_message": "Unauthorized"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 404,
+                    "error_message": "Account not fot found"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/accounts": {
+      "post": {
+        "operationId": "AccountController_getAllAccounts",
+        "summary": "Get all accounts by user",
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API key for authentication",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Accounts body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetAccountsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "result": {
+                      "own_accounts": [
+                        {
+                          "id": "67fc3d0a766d7a2c1fafefb8",
+                          "created_at": "2024-04-15T10:12:24.805Z",
+                          "updated_at": "2025-03-05T14:22:50.900Z",
+                          "company": "67fc3d0a766d7a2c1fafefb2",
+                          "finup_id": "8527419632",
+                          "name": "Example Account",
+                          "status": "Disabled",
+                          "owner": "67fc3d09766d7a2c1fafefbb",
+                          "platinum_card_limit": 15,
+                          "universal_card_limit": 20,
+                          "fees": {
+                            "deposit_fee": 0.05,
+                            "universal_issuing_fee": 4,
+                            "universal_decline_fee": 0.03,
+                            "transaction_fee": 0.01,
+                            "universal_transaction_fee": 0.01,
+                            "universal_deposit_fee": 0.01,
+                            "universal_withdraw_fee": 0.01,
+                            "platinum_issuing_fee": 0.02,
+                            "platinum_decline_fee": 0.02,
+                            "platinum_transaction_fee": 0.01,
+                            "platinum_deposit_fee": 0.01,
+                            "platinum_withdraw_fee": 0.01,
+                            "platinum_monthly_fee": 0.02
+                          },
+                          "used_promocodes": []
+                        }
+                      ],
+                      "invited_accounts": [
+                        {
+                          "id": "67fc22cf766d7a2c1fafe3d7",
+                          "created_at": "2024-04-15T09:04:29.231Z",
+                          "updated_at": "2025-03-05T14:22:51.310Z",
+                          "company": "67e8861ea998a71873c84568",
+                          "finup_id": "7483920156",
+                          "name": "Example User",
+                          "status": "Disabled",
+                          "decline_rate": 0.05,
+                          "owner": "67e8861da998a71873c84579",
+                          "platinum_card_limit": 12,
+                          "universal_card_limit": 18,
+                          "fees": {
+                            "deposit_fee": 0.04,
+                            "universal_issuing_fee": 5,
+                            "universal_decline_fee": 0.03,
+                            "transaction_fee": 0.02,
+                            "universal_transaction_fee": 0.02,
+                            "universal_deposit_fee": 0.02,
+                            "universal_withdraw_fee": 0.02,
+                            "platinum_issuing_fee": 0.03,
+                            "platinum_decline_fee": 0.03,
+                            "platinum_transaction_fee": 0.02,
+                            "platinum_deposit_fee": 0.02,
+                            "platinum_withdraw_fee": 0.02,
+                            "platinum_monthly_fee": 0.03
+                          },
+                          "used_promocodes": []
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 401,
+                    "error_message": "Unauthorized"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/accounts/{account_id}/bins": {
+      "get": {
+        "operationId": "AccountController_getCardTypes",
+        "summary": "Get Card Types by Account",
+        "parameters": [
+          {
+            "name": "account_id",
+            "required": true,
+            "in": "path",
+            "description": "Id of account",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "result": [
+                      {
+                        "id": "6705952d3ec949063b9241a0",
+                        "status": "Active",
+                        "BIN": "505849",
+                        "category": "Platinum || Universal",
+                        "currency": "USD",
+                        "3ds": true,
+                        "digital_wallet": true,
+                        "address": "1234 Elm St, San Francisco, CA, 94016, US"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 401,
+                    "error_message": "Unauthorized"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 403,
+                    "error_message": {
+                      "result": {
+                        "message": "Account has cards with negative balance",
+                        "cards": [
+                          "67b312e30a4c3db1b01a36e4",
+                          "67b312e30a4c3db1b01a36e2"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/accounts/{account_id}/wallets": {
+      "get": {
+        "operationId": "AccountController_getAccountWallets",
+        "summary": "Get account wallets",
+        "parameters": [
+          {
+            "name": "account_id",
+            "required": true,
+            "in": "path",
+            "description": "Mongo ID of the account",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API key for authentication",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "result": {
+                      "id": "67b312e30a4c3db1b01a36e4",
+                      "balance": 679,
+                      "cards_balance": 123,
+                      "finup_id": "USD2265302894",
+                      "currency": "USD"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 401,
+                    "error_message": "Unauthorized"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 404,
+                    "error_message": "Wallets not fot found"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Account"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/card/{card_id}/deposit": {
+      "post": {
+        "operationId": "CardController_cardDeposit",
+        "summary": "Card deposit",
+        "parameters": [
+          {
+            "name": "card_id",
+            "required": true,
+            "in": "path",
+            "description": "Mongo ID of the card",
+            "schema": {
+
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API key for authentication",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardDepositDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "result": {
+                      "status": "SUCCESS",
+                      "code": 201
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 401,
+                    "error_message": "Unauthorized"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 404,
+                    "error_message": "Card not fot found"
+                  }
+                }
+              }
+            }
+          },
+          "418": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 418,
+                    "error_message": "Error with update card limit"
+                  }
+                }
+              }
+            }
+          },
+          "420": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 420,
+                    "error_message": "Balance is insufficient"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/card/{card_id}/withdraw": {
+      "post": {
+        "operationId": "CardController_cardWithdraw",
+        "summary": "Card withdraw",
+        "parameters": [
+          {
+            "name": "card_id",
+            "required": true,
+            "in": "path",
+            "description": "Mongo ID of the card",
+            "schema": {
+
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API key for authentication",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CardWithdrawDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "result": {
+                      "status": "SUCCESS",
+                      "code": 201
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 401,
+                    "error_message": "Unauthorized"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 404,
+                    "error_message": "Card not fot found"
+                  }
+                }
+              }
+            }
+          },
+          "418": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 418,
+                    "error_message": "Error with update card limit"
+                  }
+                }
+              }
+            }
+          },
+          "420": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 420,
+                    "error_message": "Balance is insufficient"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/accounts/{account_id}/cards/issuing": {
+      "post": {
+        "operationId": "CardController_issueCardsV2",
+        "summary": "Issue cards",
+        "parameters": [
+          {
+            "name": "account_id",
+            "required": true,
+            "in": "path",
+            "description": "Id of account",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API key for authentication",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IssueCardsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "result": [
+                      {
+                        "id": "67b37ed1be539510101fde99",
+                        "created_at": "2025-02-17T18:24:17.653Z",
+                        "updated_at": "2025-02-17T18:24:17.653Z",
+                        "user": "65fc3d09766d7a2c1fafef99",
+                        "account": "67b300e30a4c3db1b01a3699",
+                        "currency": "USD",
+                        "EXP": "**/**",
+                        "masked_PAN": "4559 88** **** ****",
+                        "finup_id": "CRD643348276",
+                        "name": "Approved",
+                        "notes": "Debit",
+                        "category": "Universal",
+                        "currency_short_name": "USD",
+                        "balance": 0,
+                        "past_balance": 0,
+                        "future_balance": 0,
+                        "deposit": 0,
+                        "withdraw": 0,
+                        "spent": 0,
+                        "status": "Processing",
+                        "bin_id": "67ade1eef9f79c20b4e78899",
+                        "3ds": false,
+                        "address": "2381 Zanker Rd Ste 110, San Jose, CA, 95131, US"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 401,
+                    "error_message": "Unauthorized"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 403,
+                    "error_message": "You don't have access to issuing this cards"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 404,
+                    "error_message": "Bin || Wallet || Account not fot found"
+                  }
+                }
+              }
+            }
+          },
+          "420": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 420,
+                    "error_message": "Balance is insufficient"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/cards/freeze": {
+      "patch": {
+        "operationId": "CardController_suspendCards",
+        "summary": "Suspend cards by support/admin",
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API key for authentication",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BlockCardDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "result": {
+                      "Changed cards": [
+                        "67c48f6fc8614632e0b338fc",
+                        "67c48f6fc8614632e0b998fc"
+                      ],
+                      "Unchanged cards due to inappropriate status": [
+                        "67c48f6fc8614632e0b558fc"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 401,
+                    "error_message": "Unauthorized"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/cards/unfreeze": {
+      "patch": {
+        "operationId": "CardController_resumeCard",
+        "summary": "Resume cards",
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API key for authentication",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BlockCardDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "result": {
+                      "Changed cards": [
+                        "67c48f6fc8614632e0b338fc",
+                        "67c48f6fc8614632e0b998fc"
+                      ],
+                      "Unchanged cards due to inappropriate status": [
+                        "67c48f6fc8614632e0b558fc"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 401,
+                    "error_message": "Unauthorized"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/cards/close": {
+      "patch": {
+        "operationId": "CardController_canselCard",
+        "summary": "Cancel cards",
+        "parameters": [
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API key for authentication",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BlockCardDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "result": {
+                      "Changed cards": [
+                        "67c48f6fc8614632e0b338fc",
+                        "67c48f6fc8614632e0b998fc"
+                      ],
+                      "Unchanged cards due to inappropriate status": [
+                        "67c48f6fc8614632e0b558fc"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 401,
+                    "error_message": "Unauthorized"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/accounts/{account_id}/cards": {
+      "post": {
+        "operationId": "CardController_getAccountCards",
+        "summary": "Get account cards",
+        "parameters": [
+          {
+            "name": "account_id",
+            "required": true,
+            "in": "path",
+            "description": "Id of account",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API key for authentication",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "description": "Body",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetCardsDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "result": {
+                      "id": "67c48f6fc8614632e0b338fc",
+                      "name": "Approved",
+                      "bin_id": "67bcf2abf8e89d31c5f8995e",
+                      "notes": "Credit",
+                      "status": "Pending",
+                      "user": "67aa1b2c3d4e5f6789abcdef",
+                      "EXP": "**/**",
+                      "account": "67c401f9a5b7cde210f44567",
+                      "balance": 50,
+                      "deposit": 1000,
+                      "withdraw": 500,
+                      "spent": 450,
+                      "masked_PAN": "1234 56•• •••• ••••",
+                      "currency": "EUR",
+                      "category": "Business",
+                      "created_at": "2025-03-21T14:30:10.123Z",
+                      "past_balance": 75,
+                      "future_balance": 125
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 401,
+                    "error_message": "Unauthorized"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    },
+    "/cards/{card_id}": {
+      "get": {
+        "operationId": "CardController_getAccountCard",
+        "summary": "Get specified account card",
+        "parameters": [
+          {
+            "name": "card_id",
+            "required": true,
+            "in": "path",
+            "description": "Mongo ID of the card",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "API key for authentication",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "result": {
+                      "id": "67aa1234567890abcdef1234",
+                      "created_at": "2025-01-15T10:30:45.123Z",
+                      "updated_at": "2025-06-20T16:45:30.789Z",
+                      "member": "67bb0987654321fedcba5678",
+                      "user": "67cc112233445566778899aa",
+                      "account": "67dd2233445566778899bbaa",
+                      "PAN": "1234567812345678",
+                      "EXP": "12/30",
+                      "CVV": "123",
+                      "masked_PAN": "1234 56•• •••• 5678",
+                      "name": "Virtual Card",
+                      "balance": 100,
+                      "deposit": 4500.5,
+                      "withdraw": 1200.75,
+                      "spent": 3300.25,
+                      "status": "Active",
+                      "currency": "USD",
+                      "currency_short_name": "USD",
+                      "future_balance": 150,
+                      "past_balance": 200,
+                      "category": "Business",
+                      "bin_id": "67ee33445566778899aabbcc",
+                      "3ds": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 401,
+                    "error_message": "Unauthorized"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "status_code": 404,
+                    "error_message": "Card not fot found"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Card"
+        ],
+        "security": [
+          {
+            "bearer": []
+          }
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "FinUp Wallet",
+    "description": "API Documentation for Finup",
+    "version": "1.0",
+    "contact": {
+
+    }
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      }
+    },
+    "schemas": {
+      "GetAccountPaymentsFilters": {
+        "type": "object",
+        "properties": {
+          "side": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "type": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "source_id": {
+            "type": "string"
+          },
+          "search": {
+            "type": "string"
+          },
+          "from_created_at": {
+            "type": "string"
+          },
+          "to_created_at": {
+            "type": "string"
+          },
+          "timezone": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "side",
+          "type",
+          "status",
+          "source_id",
+          "search",
+          "from_created_at",
+          "to_created_at",
+          "timezone"
+        ]
+      },
+      "PaginationV2Dto": {
+        "type": "object",
+        "properties": {
+
+        }
+      },
+      "GetAccountPaymentsDto": {
+        "type": "object",
+        "properties": {
+          "filters": {
+            "$ref": "#/components/schemas/GetAccountPaymentsFilters"
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/PaginationV2Dto"
+          }
+        },
+        "required": [
+          "filters",
+          "pagination"
+        ]
+      },
+      "GetAccountsDto": {
+        "type": "object",
+        "properties": {
+          "pagination": {
+            "$ref": "#/components/schemas/PaginationV2Dto"
+          }
+        },
+        "required": [
+          "pagination"
+        ]
+      },
+      "CardDepositDto": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "amount"
+        ]
+      },
+      "CardWithdrawDto": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "amount"
+        ]
+      },
+      "IssueCardsDto": {
+        "type": "object",
+        "properties": {
+          "bin_id": {
+            "type": "string",
+            "description": "ID of card_type"
+          },
+          "name": {
+            "type": "string"
+          },
+          "notes": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "number",
+            "description": "Number of cards to be created"
+          },
+          "promo": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "bin_id",
+          "name",
+          "notes",
+          "amount",
+          "promo"
+        ]
+      },
+      "BlockCardDto": {
+        "type": "object",
+        "properties": {
+          "card_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "card_ids"
+        ]
+      },
+      "GetCardsFilters": {
+        "type": "object",
+        "properties": {
+          "bin": {
+            "description": "List of allowable BINs.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "type": "array",
+            "example": "[\"Enabled\", \"Canceled\"]",
+            "items": {
+              "type": "string",
+              "enum": [
+                "Enabled",
+                "Closed",
+                "Freezed",
+                "Processing",
+                "Blocked"
+              ]
+            }
+          },
+          "currency": {
+            "description": "A list of allowable currencies. Pass the currency ID.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "category": {
+            "description": "A list of allowable categories.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "balance_from": {
+            "type": "number",
+            "description": "A filtering parameter that specifies the minimum balance value. Only objects with balance exceeding this value are returned"
+          },
+          "balance_to": {
+            "type": "number",
+            "description": "A filtering parameter that specifies the maximum balance value. Only objects with balance that do not exceed this value are returned"
+          },
+          "search": {
+            "type": "string",
+            "description": "Parameter that searches by substring."
+          }
+        }
+      },
+      "GetCardsDto": {
+        "type": "object",
+        "properties": {
+          "filters": {
+            "$ref": "#/components/schemas/GetCardsFilters"
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/PaginationV2Dto"
+          }
+        },
+        "required": [
+          "filters",
+          "pagination"
+        ]
+      }
+    }
+  }
+}
