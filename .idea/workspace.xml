@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a4668e3-0740-4be0-8c4a-f408dca0a332" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/mint.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/favicon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mint.json" beforeDir="false" afterPath="$PROJECT_DIR$/mint.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +60,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\ivani\WebstormProjects\docs" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\ivani\WebstormProjects\docs\static" />
+    </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -74,7 +79,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1739806884340</updated>
-      <workItem from="1739806885854" duration="2887000" />
+      <workItem from="1739806885854" duration="3305000" />
     </task>
     <servers />
   </component>

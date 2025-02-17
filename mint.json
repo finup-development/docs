@@ -1,6 +1,6 @@
 {
   "name": "My API Docs",
-  "favicon": "/static/favicon.ico",
+  "favicon": "/static/favicon.png",
   "colors": {
     "primary": "#007bff"
   },
@@ -11,6 +11,6 @@
     }
   ],
   "api": {
-    "file": "swagger.json"
+    "openapi": "swagger.json"
   }
 }
