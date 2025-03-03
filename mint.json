@@ -41,12 +41,6 @@
         "banking/introduction",
         "banking/pagination",
         {
-          "group": "User",
-          "pages": [
-            "banking/user/get-user-by-himself"
-          ]
-        },
-        {
           "group": "Accounts",
           "pages": [
             "banking/account/get-all-accounts-by-supportadmin",
