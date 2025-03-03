@@ -45,23 +45,22 @@
           "pages": [
             "banking/account/get-all-accounts-by-supportadmin",
             "banking/account/get-specify-account-by-id",
-            "banking/account/creating-new-account-in-existing-company"
+            "banking/account/get-card-type-by-account",
+            "banking/account/get-transactions",
+            "banking/account/get-wallets"
           ]
         },
         {
           "group": "Cards",
           "pages": [
             "banking/card/issue-cards",
+            "banking/card/card-deposit",
+            "banking/card/card-withdraw",
             "banking/card/get-account-cards",
             "banking/card/get-specified-account-card",
-            "banking/card/card-update",
-            "banking/card/bulk-withdraw-from-cards",
-            "banking/card/card-otp",
-            "banking/account/get-card-type-by-account",
             "banking/card/cancel-cards",
             "banking/card/resume-cards",
-            "banking/card/suspend-cards-by-supportadmin",
-            "banking/card/reveal-cards"
+            "banking/card/suspend-cards-by-supportadmin"
           ]
         }
       ]
