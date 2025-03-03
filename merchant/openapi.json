@@ -38,60 +38,70 @@
         },
         "responses": {
           "201": {
-            "description": "",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "result": [
-                      {
-                        "id": "65fc4e136fb5c06281ac5e4e",
-                        "account_id": "622c22cf766d7a2c1fafe2d6",
-                        "source_id": "65fc31cf766d7a2c1fafe2e3",
-                        "source": "Wallet",
-                        "status": "Approved",
-                        "side": "Credit",
-                        "amount": 150,
-                        "currency": "USD",
-                        "type": "ExternalTransfer",
-                        "created_at": "2024-03-21T15:11:15.052Z",
-                        "updated_at": "2024-09-05T23:53:41.885Z",
-                        "source_identifier": "USD2156306518",
-                        "external_transfer_data": {
-                          "payment_method": "65e73213018090468561a60c",
-                          "external_transfer_id": "65fc4e11895eacd8b005e71c",
-                          "sub_type": "External",
-                          "hash": "0x43b4501753829064ecee79b48c9cc94f16da2b2858b3fc4d0ea682d75ada579",
-                          "address_to": "0x41196b2hd983A909a84837A311639cdf57E9f"
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "string" },
+                          "account_id": { "type": "string" },
+                          "source_id": { "type": "string" },
+                          "source": { "type": "string" },
+                          "status": { "type": "string" },
+                          "side": { "type": "string" },
+                          "amount": { "type": "number" },
+                          "currency": { "type": "string" },
+                          "type": { "type": "string" },
+                          "created_at": { "type": "string", "format": "date-time" },
+                          "updated_at": { "type": "string", "format": "date-time" },
+                          "source_identifier": { "type": "string" },
+                          "external_transfer_data": {
+                            "type": "object",
+                            "properties": {
+                              "payment_method": { "type": "string" },
+                              "external_transfer_id": { "type": "string" },
+                              "sub_type": { "type": "string" },
+                              "hash": { "type": "string" },
+                              "address_to": { "type": "string" }
+                            }
+                          }
                         }
                       }
-                    ]
+                    }
                   }
                 }
               }
             }
           },
           "401": {
-            "description": "",
+            "description": "Unauthorized",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "status_code": 401,
-                    "error_message": "Unauthorized"
+                  "type": "object",
+                  "properties": {
+                    "status_code": { "type": "integer" },
+                    "error_message": { "type": "string" }
                   }
                 }
               }
             }
           },
           "404": {
-            "description": "",
+            "description": "Account not found",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "status_code": 404,
-                    "error_message": "Account not fot found"
+                  "type": "object",
+                  "properties": {
+                    "status_code": { "type": "integer" },
+                    "error_message": { "type": "string" }
                   }
                 }
               }
@@ -129,35 +139,42 @@
         ],
         "responses": {
           "201": {
-            "description": "",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
+                  "type": "object",
+                  "properties": {
                     "result": {
-                      "id": "65ac22cf346d7a2c1fafe2d6",
-                      "name": "FT I BOGDAN",
-                      "member_id": "65fc3211124d7a2c1fafecc1",
-                      "finup_id": "1987516235",
-                      "decline_rate": 0,
-                      "fees": {
-                        "deposit_fee": 0.03,
-                        "universal_issuing_fee": 3,
-                        "universal_decline_fee": 0.025,
-                        "transaction_fee": 0,
-                        "universal_transaction_fee": 0,
-                        "universal_deposit_fee": 0,
-                        "universal_withdraw_fee": 0,
-                        "platinum_issuing_fee": 0,
-                        "platinum_decline_fee": 0,
-                        "platinum_transaction_fee": 0,
-                        "platinum_deposit_fee": 0,
-                        "platinum_withdraw_fee": 0,
-                        "platinum_monthly_fee": 0
-                      },
-                      "wallet_balance": 0,
-                      "verification_status": "Allowed",
-                      "card_balance": 5
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "string" },
+                        "name": { "type": "string" },
+                        "member_id": { "type": "string" },
+                        "finup_id": { "type": "string" },
+                        "decline_rate": { "type": "number" },
+                        "fees": {
+                          "type": "object",
+                          "properties": {
+                            "deposit_fee": { "type": "number" },
+                            "universal_issuing_fee": { "type": "number" },
+                            "universal_decline_fee": { "type": "number" },
+                            "transaction_fee": { "type": "number" },
+                            "universal_transaction_fee": { "type": "number" },
+                            "universal_deposit_fee": { "type": "number" },
+                            "universal_withdraw_fee": { "type": "number" },
+                            "platinum_issuing_fee": { "type": "number" },
+                            "platinum_decline_fee": { "type": "number" },
+                            "platinum_transaction_fee": { "type": "number" },
+                            "platinum_deposit_fee": { "type": "number" },
+                            "platinum_withdraw_fee": { "type": "number" },
+                            "platinum_monthly_fee": { "type": "number" }
+                          }
+                        },
+                        "wallet_balance": { "type": "number" },
+                        "verification_status": { "type": "string" },
+                        "card_balance": { "type": "number" }
+                      }
                     }
                   }
                 }
@@ -165,32 +182,35 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "Unauthorized",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "status_code": 401,
-                    "error_message": "Unauthorized"
+                  "type": "object",
+                  "properties": {
+                    "status_code": { "type": "integer" },
+                    "error_message": { "type": "string" }
                   }
                 }
               }
             }
           },
           "404": {
-            "description": "",
+            "description": "Account not found",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "status_code": 404,
-                    "error_message": "Account not fot found"
+                  "type": "object",
+                  "properties": {
+                    "status_code": { "type": "integer" },
+                    "error_message": { "type": "string" }
                   }
                 }
               }
             }
           }
-        },
+        }
+      ,
         "tags": [
           "Account"
         ]
@@ -224,97 +244,73 @@
         },
         "responses": {
           "201": {
-            "description": "Successful response",
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
+                  "example": {
                     "result": {
-                      "type": "object",
-                      "properties": {
-                        "own_accounts": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "id": { "type": "string" },
-                              "created_at": { "type": "string", "format": "date-time" },
-                              "updated_at": { "type": "string", "format": "date-time" },
-                              "company": { "type": "string" },
-                              "finup_id": { "type": "string" },
-                              "name": { "type": "string" },
-                              "status": { "type": "string" },
-                              "owner": { "type": "string" },
-                              "platinum_card_limit": { "type": "number" },
-                              "universal_card_limit": { "type": "number" },
-                              "fees": {
-                                "type": "object",
-                                "properties": {
-                                  "deposit_fee": { "type": "number" },
-                                  "universal_issuing_fee": { "type": "number" },
-                                  "universal_decline_fee": { "type": "number" },
-                                  "transaction_fee": { "type": "number" },
-                                  "universal_transaction_fee": { "type": "number" },
-                                  "universal_deposit_fee": { "type": "number" },
-                                  "universal_withdraw_fee": { "type": "number" },
-                                  "platinum_issuing_fee": { "type": "number" },
-                                  "platinum_decline_fee": { "type": "number" },
-                                  "platinum_transaction_fee": { "type": "number" },
-                                  "platinum_deposit_fee": { "type": "number" },
-                                  "platinum_withdraw_fee": { "type": "number" },
-                                  "platinum_monthly_fee": { "type": "number" }
-                                }
-                              },
-                              "used_promocodes": {
-                                "type": "array",
-                                "items": { "type": "string" }
-                              }
-                            }
-                          }
-                        },
-                        "invited_accounts": {
-                          "type": "array",
-                          "items": {
-                            "type": "object",
-                            "properties": {
-                              "id": { "type": "string" },
-                              "created_at": { "type": "string", "format": "date-time" },
-                              "updated_at": { "type": "string", "format": "date-time" },
-                              "company": { "type": "string" },
-                              "finup_id": { "type": "string" },
-                              "name": { "type": "string" },
-                              "status": { "type": "string" },
-                              "decline_rate": { "type": "number" },
-                              "owner": { "type": "string" },
-                              "platinum_card_limit": { "type": "number" },
-                              "universal_card_limit": { "type": "number" },
-                              "fees": {
-                                "type": "object",
-                                "properties": {
-                                  "deposit_fee": { "type": "number" },
-                                  "universal_issuing_fee": { "type": "number" },
-                                  "universal_decline_fee": { "type": "number" },
-                                  "transaction_fee": { "type": "number" },
-                                  "universal_transaction_fee": { "type": "number" },
-                                  "universal_deposit_fee": { "type": "number" },
-                                  "universal_withdraw_fee": { "type": "number" },
-                                  "platinum_issuing_fee": { "type": "number" },
-                                  "platinum_decline_fee": { "type": "number" },
-                                  "platinum_transaction_fee": { "type": "number" },
-                                  "platinum_deposit_fee": { "type": "number" },
-                                  "platinum_withdraw_fee": { "type": "number" },
-                                  "platinum_monthly_fee": { "type": "number" }
-                                }
-                              },
-                              "used_promocodes": {
-                                "type": "array",
-                                "items": { "type": "string" }
-                              }
-                            }
-                          }
+                      "own_accounts": [
+                        {
+                          "id": "67fc3d0a766d7a2c1fafefb8",
+                          "created_at": "2024-04-15T10:12:24.805Z",
+                          "updated_at": "2025-03-05T14:22:50.900Z",
+                          "company": "67fc3d0a766d7a2c1fafefb2",
+                          "finup_id": "8527419632",
+                          "name": "Example Account",
+                          "status": "Disabled",
+                          "owner": "67fc3d09766d7a2c1fafefbb",
+                          "platinum_card_limit": 15,
+                          "universal_card_limit": 20,
+                          "fees": {
+                            "deposit_fee": 0.05,
+                            "universal_issuing_fee": 4,
+                            "universal_decline_fee": 0.03,
+                            "transaction_fee": 0.01,
+                            "universal_transaction_fee": 0.01,
+                            "universal_deposit_fee": 0.01,
+                            "universal_withdraw_fee": 0.01,
+                            "platinum_issuing_fee": 0.02,
+                            "platinum_decline_fee": 0.02,
+                            "platinum_transaction_fee": 0.01,
+                            "platinum_deposit_fee": 0.01,
+                            "platinum_withdraw_fee": 0.01,
+                            "platinum_monthly_fee": 0.02
+                          },
+                          "used_promocodes": []
                         }
-                      }
+                      ],
+                      "invited_accounts": [
+                        {
+                          "id": "67fc22cf766d7a2c1fafe3d7",
+                          "created_at": "2024-04-15T09:04:29.231Z",
+                          "updated_at": "2025-03-05T14:22:51.310Z",
+                          "company": "67e8861ea998a71873c84568",
+                          "finup_id": "7483920156",
+                          "name": "Example User",
+                          "status": "Disabled",
+                          "decline_rate": 0.05,
+                          "owner": "67e8861da998a71873c84579",
+                          "platinum_card_limit": 12,
+                          "universal_card_limit": 18,
+                          "fees": {
+                            "deposit_fee": 0.04,
+                            "universal_issuing_fee": 5,
+                            "universal_decline_fee": 0.03,
+                            "transaction_fee": 0.02,
+                            "universal_transaction_fee": 0.02,
+                            "universal_deposit_fee": 0.02,
+                            "universal_withdraw_fee": 0.02,
+                            "platinum_issuing_fee": 0.03,
+                            "platinum_decline_fee": 0.03,
+                            "platinum_transaction_fee": 0.02,
+                            "platinum_deposit_fee": 0.02,
+                            "platinum_withdraw_fee": 0.02,
+                            "platinum_monthly_fee": 0.03
+                          },
+                          "used_promocodes": []
+                        }
+                      ]
                     }
                   }
                 }
@@ -322,14 +318,13 @@
             }
           },
           "401": {
-            "description": "Unauthorized",
+            "description": "",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status_code": { "type": "integer" },
-                    "error_message": { "type": "string" }
+                  "example": {
+                    "status_code": 401,
+                    "error_message": "Unauthorized"
                   }
                 }
               }
@@ -358,55 +353,63 @@
         ],
         "responses": {
           "201": {
-            "description": "",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "result": [
-                      {
-                        "id": "6705952d3ec949063b9241a0",
-                        "status": "Active",
-                        "BIN": "505849",
-                        "category": "Platinum || Universal",
-                        "currency": "USD",
-                        "3ds": true,
-                        "digital_wallet": true,
-                        "address": "1234 Elm St, San Francisco, CA, 94016, US"
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "string" },
+                          "status": { "type": "string" },
+                          "BIN": { "type": "string" },
+                          "category": { "type": "string" },
+                          "currency": { "type": "string" },
+                          "3ds": { "type": "boolean" },
+                          "digital_wallet": { "type": "boolean" },
+                          "address": { "type": "string" }
+                        }
                       }
-                    ]
+                    }
                   }
                 }
               }
             }
           },
           "401": {
-            "description": "",
+            "description": "Unauthorized",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "status_code": 401,
-                    "error_message": "Unauthorized"
+                  "type": "object",
+                  "properties": {
+                    "status_code": { "type": "integer" },
+                    "error_message": { "type": "string" }
                   }
                 }
               }
             }
           },
           "403": {
-            "description": "",
+            "description": "Forbidden - Account has cards with negative balance",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "status_code": 403,
+                  "type": "object",
+                  "properties": {
+                    "status_code": { "type": "integer" },
                     "error_message": {
-                      "result": {
-                        "message": "Account has cards with negative balance",
-                        "cards": [
-                          "67b312e30a4c3db1b01a36e4",
-                          "67b312e30a4c3db1b01a36e2"
-                        ]
+                      "type": "object",
+                      "properties": {
+                        "message": { "type": "string" },
+                        "cards": {
+                          "type": "array",
+                          "items": { "type": "string" }
+                        }
                       }
                     }
                   }
@@ -446,17 +449,21 @@
         ],
         "responses": {
           "201": {
-            "description": "",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
+                  "type": "object",
+                  "properties": {
                     "result": {
-                      "id": "67b312e30a4c3db1b01a36e4",
-                      "balance": 679,
-                      "cards_balance": 123,
-                      "finup_id": "USD2265302894",
-                      "currency": "USD"
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "string" },
+                        "balance": { "type": "number" },
+                        "cards_balance": { "type": "number" },
+                        "finup_id": { "type": "string" },
+                        "currency": { "type": "string" }
+                      }
                     }
                   }
                 }
@@ -464,26 +471,28 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "Unauthorized",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "status_code": 401,
-                    "error_message": "Unauthorized"
+                  "type": "object",
+                  "properties": {
+                    "status_code": { "type": "integer" },
+                    "error_message": { "type": "string" }
                   }
                 }
               }
             }
           },
           "404": {
-            "description": "",
+            "description": "Wallets not found",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "status_code": 404,
-                    "error_message": "Wallets not fot found"
+                  "type": "object",
+                  "properties": {
+                    "status_code": { "type": "integer" },
+                    "error_message": { "type": "string" }
                   }
                 }
               }
@@ -532,14 +541,18 @@
         },
         "responses": {
           "201": {
-            "description": "",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
+                  "type": "object",
+                  "properties": {
                     "result": {
-                      "status": "SUCCESS",
-                      "code": 201
+                      "type": "object",
+                      "properties": {
+                        "status": { "type": "string" },
+                        "code": { "type": "integer" }
+                      }
                     }
                   }
                 }
@@ -547,52 +560,56 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "Unauthorized",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "status_code": 401,
-                    "error_message": "Unauthorized"
+                  "type": "object",
+                  "properties": {
+                    "status_code": { "type": "integer" },
+                    "error_message": { "type": "string" }
                   }
                 }
               }
             }
           },
           "404": {
-            "description": "",
+            "description": "Card not found",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "status_code": 404,
-                    "error_message": "Card not fot found"
+                  "type": "object",
+                  "properties": {
+                    "status_code": { "type": "integer" },
+                    "error_message": { "type": "string" }
                   }
                 }
               }
             }
           },
           "418": {
-            "description": "",
+            "description": "Error with update card limit",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "status_code": 418,
-                    "error_message": "Error with update card limit"
+                  "type": "object",
+                  "properties": {
+                    "status_code": { "type": "integer" },
+                    "error_message": { "type": "string" }
                   }
                 }
               }
             }
           },
           "420": {
-            "description": "",
+            "description": "Balance is insufficient",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "status_code": 420,
-                    "error_message": "Balance is insufficient"
+                  "type": "object",
+                  "properties": {
+                    "status_code": { "type": "integer" },
+                    "error_message": { "type": "string" }
                   }
                 }
               }
@@ -641,14 +658,18 @@
         },
         "responses": {
           "201": {
-            "description": "",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
+                  "type": "object",
+                  "properties": {
                     "result": {
-                      "status": "SUCCESS",
-                      "code": 201
+                      "type": "object",
+                      "properties": {
+                        "status": { "type": "string" },
+                        "code": { "type": "integer" }
+                      }
                     }
                   }
                 }
@@ -656,52 +677,56 @@
             }
           },
           "401": {
-            "description": "",
+            "description": "Unauthorized",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "status_code": 401,
-                    "error_message": "Unauthorized"
+                  "type": "object",
+                  "properties": {
+                    "status_code": { "type": "integer" },
+                    "error_message": { "type": "string" }
                   }
                 }
               }
             }
           },
           "404": {
-            "description": "",
+            "description": "Card not found",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "status_code": 404,
-                    "error_message": "Card not fot found"
+                  "type": "object",
+                  "properties": {
+                    "status_code": { "type": "integer" },
+                    "error_message": { "type": "string" }
                   }
                 }
               }
             }
           },
           "418": {
-            "description": "",
+            "description": "Error with update card limit",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "status_code": 418,
-                    "error_message": "Error with update card limit"
+                  "type": "object",
+                  "properties": {
+                    "status_code": { "type": "integer" },
+                    "error_message": { "type": "string" }
                   }
                 }
               }
             }
           },
           "420": {
-            "description": "",
+            "description": "Balance is insufficient",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "status_code": 420,
-                    "error_message": "Balance is insufficient"
+                  "type": "object",
+                  "properties": {
+                    "status_code": { "type": "integer" },
+                    "error_message": { "type": "string" }
                   }
                 }
               }
@@ -750,90 +775,194 @@
         },
         "responses": {
           "201": {
-            "description": "",
+            "description": "Resource created successfully",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "result": [
-                      {
-                        "id": "67b37ed1be539510101fde99",
-                        "created_at": "2025-02-17T18:24:17.653Z",
-                        "updated_at": "2025-02-17T18:24:17.653Z",
-                        "user": "65fc3d09766d7a2c1fafef99",
-                        "account": "67b300e30a4c3db1b01a3699",
-                        "currency": "USD",
-                        "EXP": "**/**",
-                        "masked_PAN": "4559 88** **** ****",
-                        "finup_id": "CRD643348276",
-                        "name": "Approved",
-                        "notes": "Debit",
-                        "category": "Universal",
-                        "currency_short_name": "USD",
-                        "balance": 0,
-                        "past_balance": 0,
-                        "future_balance": 0,
-                        "deposit": 0,
-                        "withdraw": 0,
-                        "spent": 0,
-                        "status": "Processing",
-                        "bin_id": "67ade1eef9f79c20b4e78899",
-                        "3ds": false,
-                        "address": "2381 Zanker Rd Ste 110, San Jose, CA, 95131, US"
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "example": "67b37ed1be539510101fde99"
+                          },
+                          "created_at": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2025-02-17T18:24:17.653Z"
+                          },
+                          "updated_at": {
+                            "type": "string",
+                            "format": "date-time",
+                            "example": "2025-02-17T18:24:17.653Z"
+                          },
+                          "user": {
+                            "type": "string",
+                            "example": "65fc3d09766d7a2c1fafef99"
+                          },
+                          "account": {
+                            "type": "string",
+                            "example": "67b300e30a4c3db1b01a3699"
+                          },
+                          "currency": {
+                            "type": "string",
+                            "example": "USD"
+                          },
+                          "EXP": {
+                            "type": "string",
+                            "example": "**/**"
+                          },
+                          "masked_PAN": {
+                            "type": "string",
+                            "example": "4559 88** **** ****"
+                          },
+                          "finup_id": {
+                            "type": "string",
+                            "example": "CRD643348276"
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "Approved"
+                          },
+                          "notes": {
+                            "type": "string",
+                            "example": "Debit"
+                          },
+                          "category": {
+                            "type": "string",
+                            "example": "Universal"
+                          },
+                          "currency_short_name": {
+                            "type": "string",
+                            "example": "USD"
+                          },
+                          "balance": {
+                            "type": "number",
+                            "example": 0
+                          },
+                          "past_balance": {
+                            "type": "number",
+                            "example": 0
+                          },
+                          "future_balance": {
+                            "type": "number",
+                            "example": 0
+                          },
+                          "deposit": {
+                            "type": "number",
+                            "example": 0
+                          },
+                          "withdraw": {
+                            "type": "number",
+                            "example": 0
+                          },
+                          "spent": {
+                            "type": "number",
+                            "example": 0
+                          },
+                          "status": {
+                            "type": "string",
+                            "example": "Processing"
+                          },
+                          "bin_id": {
+                            "type": "string",
+                            "example": "67ade1eef9f79c20b4e78899"
+                          },
+                          "3ds": {
+                            "type": "boolean",
+                            "example": false
+                          },
+                          "address": {
+                            "type": "string",
+                            "example": "2381 Zanker Rd Ste 110, San Jose, CA, 95131, US"
+                          }
+                        }
                       }
-                    ]
+                    }
                   }
                 }
               }
             }
           },
           "401": {
-            "description": "",
+            "description": "Unauthorized",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "status_code": 401,
-                    "error_message": "Unauthorized"
+                  "type": "object",
+                  "properties": {
+                    "status_code": {
+                      "type": "integer",
+                      "example": 401
+                    },
+                    "error_message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    }
                   }
                 }
               }
             }
           },
           "403": {
-            "description": "",
+            "description": "Forbidden",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "status_code": 403,
-                    "error_message": "You don't have access to issuing this cards"
+                  "type": "object",
+                  "properties": {
+                    "status_code": {
+                      "type": "integer",
+                      "example": 403
+                    },
+                    "error_message": {
+                      "type": "string",
+                      "example": "You don't have access to issuing this cards"
+                    }
                   }
                 }
               }
             }
           },
           "404": {
-            "description": "",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "status_code": 404,
-                    "error_message": "Bin || Wallet || Account not fot found"
+                  "type": "object",
+                  "properties": {
+                    "status_code": {
+                      "type": "integer",
+                      "example": 404
+                    },
+                    "error_message": {
+                      "type": "string",
+                      "example": "Bin || Wallet || Account not fot found"
+                    }
                   }
                 }
               }
             }
           },
           "420": {
-            "description": "",
+            "description": "Balance Insufficient",
             "content": {
               "application/json": {
                 "schema": {
-                  "example": {
-                    "status_code": 420,
-                    "error_message": "Balance is insufficient"
+                  "type": "object",
+                  "properties": {
+                    "status_code": {
+                      "type": "integer",
+                      "example": 420
+                    },
+                    "error_message": {
+                      "type": "string",
+                      "example": "Balance is insufficient"
+                    }
                   }
                 }
               }
