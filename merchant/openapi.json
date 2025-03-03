@@ -100,11 +100,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -198,11 +193,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -323,11 +313,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -407,11 +392,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -487,11 +467,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -601,11 +576,6 @@
         },
         "tags": [
           "Card"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -715,11 +685,6 @@
         },
         "tags": [
           "Card"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -918,11 +883,6 @@
         },
         "tags": [
           "Card"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -989,11 +949,6 @@
         },
         "tags": [
           "Card"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1060,11 +1015,6 @@
         },
         "tags": [
           "Card"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1151,11 +1101,6 @@
         },
         "tags": [
           "Card"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -1249,11 +1194,6 @@
         },
         "tags": [
           "Card"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     }
@@ -1269,13 +1209,6 @@
   "tags": [],
   "servers": [],
   "components": {
-    "securitySchemes": {
-      "bearer": {
-        "scheme": "bearer",
-        "bearerFormat": "JWT",
-        "type": "http"
-      }
-    },
     "schemas": {
       "GetAccountPaymentsFilters": {
         "type": "object",
