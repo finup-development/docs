@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a4668e3-0740-4be0-8c4a-f408dca0a332" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/mintlify.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mint.json" beforeDir="false" afterPath="$PROJECT_DIR$/mint.json" afterDir="false" />
-    </list>
+    <list default="true" id="7c487297-92d2-46ac-8ce8-aa3409ca1e20" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
