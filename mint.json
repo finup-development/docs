@@ -47,7 +47,7 @@
             "banking/account/get-specify-account-by-id",
             "banking/account/get-card-type-by-account",
             "banking/account/get-transactions",
-            "banking/account/get-wallets"
+            "banking/account/get-account-wallets"
           ]
         },
         {

@@ -323,11 +323,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
@@ -407,11 +402,6 @@
         },
         "tags": [
           "Account"
-        ],
-        "security": [
-          {
-            "bearer": []
-          }
         ]
       }
     },
