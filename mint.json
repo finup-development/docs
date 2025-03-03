@@ -69,52 +69,7 @@
             "banking/card/suspend-cards-by-supportadmin",
             "banking/card/reveal-cards"
           ]
-        },
-        {
-          "group": "Members",
-          "pages": [
-            "banking/member/get-account-members",
-            "banking/member/invite-member",
-            "banking/member/get-member",
-            "banking/member/update-accounts-member",
-            "banking/member/member-suspend",
-            "banking/member.member-resume",
-            "banking/member/set-member-disabled-status"
-          ]
-        },
-        {
-          "group": "Payments",
-          "pages": [
-            "banking/payment/get-account-payments"
-          ]
-        },
-        {
-          "group": "Transfer",
-          "pages": [
-            "banking/account/account-transfer-rate",
-            "banking/account/account-transfer-confirmation"
-          ]
-        },
-        {
-          "group": "Wallets",
-          "pages": [
-            "banking/wallet/get-account-wallets"
-          ]
         }
-      ]
-    },
-    {
-      "group": "Coins",
-      "pages": [
-        "merchant/endpoint/coin/get-coins"
-      ]
-    },
-    {
-      "group": "Invoice",
-      "pages": [
-        "merchant/endpoint/invoice/delete-invoice",
-        "merchant/endpoint/invoice/get-invoice",
-        "merchant/endpoint/invoice/create-invoice"
       ]
     }
   ]
