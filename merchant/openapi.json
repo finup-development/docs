@@ -224,10 +224,58 @@
         },
         "responses": {
           "201": {
-            "description": "",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
+                  "type": "object",
+                  "properties": {
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "own_accounts": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": { "type": "string" },
+                              "created_at": { "type": "string", "format": "date-time" },
+                              "updated_at": { "type": "string", "format": "date-time" },
+                              "company": { "type": "string" },
+                              "finup_id": { "type": "string" },
+                              "name": { "type": "string" },
+                              "status": { "type": "string" },
+                              "owner": { "type": "string" },
+                              "platinum_card_limit": { "type": "number" },
+                              "universal_card_limit": { "type": "number" },
+                              "fees": {
+                                "type": "object",
+                                "properties": {
+                                  "deposit_fee": { "type": "number" },
+                                  "universal_issuing_fee": { "type": "number" },
+                                  "universal_decline_fee": { "type": "number" },
+                                  "transaction_fee": { "type": "number" },
+                                  "universal_transaction_fee": { "type": "number" },
+                                  "universal_deposit_fee": { "type": "number" },
+                                  "universal_withdraw_fee": { "type": "number" },
+                                  "platinum_issuing_fee": { "type": "number" },
+                                  "platinum_decline_fee": { "type": "number" },
+                                  "platinum_transaction_fee": { "type": "number" },
+                                  "platinum_deposit_fee": { "type": "number" },
+                                  "platinum_withdraw_fee": { "type": "number" },
+                                  "platinum_monthly_fee": { "type": "number" }
+                                }
+                              },
+                              "used_promocodes": {
+                                "type": "array",
+                                "items": { "type": "string" }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
                   "example": {
                     "result": {
                       "own_accounts": [
@@ -259,52 +307,8 @@
                           },
                           "used_promocodes": []
                         }
-                      ],
-                      "invited_accounts": [
-                        {
-                          "id": "67fc22cf766d7a2c1fafe3d7",
-                          "created_at": "2024-04-15T09:04:29.231Z",
-                          "updated_at": "2025-03-05T14:22:51.310Z",
-                          "company": "67e8861ea998a71873c84568",
-                          "finup_id": "7483920156",
-                          "name": "Example User",
-                          "status": "Disabled",
-                          "decline_rate": 0.05,
-                          "owner": "67e8861da998a71873c84579",
-                          "platinum_card_limit": 12,
-                          "universal_card_limit": 18,
-                          "fees": {
-                            "deposit_fee": 0.04,
-                            "universal_issuing_fee": 5,
-                            "universal_decline_fee": 0.03,
-                            "transaction_fee": 0.02,
-                            "universal_transaction_fee": 0.02,
-                            "universal_deposit_fee": 0.02,
-                            "universal_withdraw_fee": 0.02,
-                            "platinum_issuing_fee": 0.03,
-                            "platinum_decline_fee": 0.03,
-                            "platinum_transaction_fee": 0.02,
-                            "platinum_deposit_fee": 0.02,
-                            "platinum_withdraw_fee": 0.02,
-                            "platinum_monthly_fee": 0.03
-                          },
-                          "used_promocodes": []
-                        }
                       ]
                     }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "example": {
-                    "status_code": 401,
-                    "error_message": "Unauthorized"
                   }
                 }
               }
