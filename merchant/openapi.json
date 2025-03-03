@@ -1249,18 +1249,7 @@
           "timezone": {
             "type": "string"
           }
-        },
-        "required": [
-          "side",
-          "type",
-          "status",
-          "source_id",
-          "search",
-          "from_created_at",
-          "include_internal_transfer",
-          "to_created_at",
-          "timezone"
-        ]
+        }
       },
       "PaginationV2Dto": {
         "type": "object",
@@ -1340,9 +1329,7 @@
         "required": [
           "bin_id",
           "name",
-          "notes",
-          "amount",
-          "promo"
+          "amount"
         ]
       },
       "BlockCardDto": {
