@@ -1,0 +1,32 @@
+---
+title: 'Webhooks'
+---
+## Get Started
+
+To subscribe to webhooks, you need to go to the [Menu -> Settings -> API -> Webhooks](https://app.finup.io/settings) section in your account. If your server responds successfully, webhooks will be forwarded with exponential time intervals.
+
+## Webhook examples
+
+# Transaction
+```json
+{
+  "x-api-key": "d5f3b6a3d4e6f1..."
+}
+```
+
+# Otp
+```json
+{
+  "x-api-key": "d5f3b6a3d4e6f1..."
+}
+```
+
+## Webhook signature
+
+To make sure that the webhook is not fake and was actually sent by us, you can check the signature using this algorithm:
+
+```json
+{
+  "x-api-key": "d5f3b6a3d4e6f1..."
+}
+```

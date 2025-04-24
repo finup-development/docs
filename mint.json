@@ -36,6 +36,7 @@
       "pages": [
         "banking/introduction",
         "banking/pagination",
+        "banking/webhooks",
         {
           "group": "Accounts",
           "pages": [
