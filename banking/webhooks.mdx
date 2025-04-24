@@ -3,30 +3,145 @@ title: 'Webhooks'
 ---
 ## Get Started
 
-To subscribe to webhooks, you need to go to the [Menu -> Settings -> API -> Webhooks](https://app.finup.io/settings) section in your account. If your server responds successfully, webhooks will be forwarded with exponential time intervals.
+To subscribe to webhooks, you need to go to the [Menu -> Settings -> API -> Webhooks](https://app.finup.io/settings) section in your account. If your server response not successful, webhooks will be forwarded with exponential time intervals. The history of sent webhooks and responses from your server can also be found in the frontend in the "Webhooks" section.
 
 ## Webhook examples
 
 # Transaction
 ```json
 {
-  "x-api-key": "d5f3b6a3d4e6f1..."
+    "id": "680a2a9b00ae350518588834",
+    "account_id": "680a2a9b00ae350518581277",
+    "source_id": "680a2a9b00ae350518580034",
+    "source": "Card",
+    "status": "Declined/Canceled/Pending/Approved",
+    "side": "Credit/Debit",
+    "amount": 100,
+    "currency": "USD",
+    "type": "Card",
+    "created_at": "2025-04-24T12:12:11.347+00:00",
+    "updated_at": "2025-04-24T12:12:11.347+00:00",
+    "card": {
+      "id": "680a2a9b00ae350518580034",
+      "masked_PAN": "4302 63** **** 1234",
+      "name": "TestCard",
+    },
+    "card_data": {
+      "merchant_name": "FACEBOOK",
+      "original_amount": 98,
+      "original_currency": "EUR",
+      "decline_code": "01/02/03/04/10",
+    },
+    "webhook_type": "Transaction",
 }
 ```
 
 # Otp
 ```json
 {
-  "x-api-key": "d5f3b6a3d4e6f1..."
+  "id": "680a2a9b00ae350518581234",
+  "account_id": "680a2a9b00ae350518589904",
+  "card_id": "680a2a9b00ae354878586604",
+  "amount": 100,
+  "currency": "USD",
+  "created_at": "2025-04-24T12:12:11.347+00:00",
+  "updated_at": "2025-04-24T12:12:11.347+00:00",
+  "card": {
+    "id": "680a2a9b00ae354878586604",
+    "masked_PAN": "4302 63** **** 1234",
+    "name": "Test Card",
+  },
+  "webhook_type": "Otp",
 }
 ```
 
 ## Webhook signature
 
-To make sure that the webhook is not fake and was actually sent by us, you can check the signature using this algorithm:
+To make sure the webhook is not fake and was actually sent by us, you can check the signature using 'x-webhook-signature' from the headers and your secret in this algorithm:
 
-```json
-{
-  "x-api-key": "d5f3b6a3d4e6f1..."
+```python
+import hmac
+import hashlib
+import json
+
+def verify_webhook_signature(payload: dict, received_signature: str, secret: str) -> bool:
+    expected_signature = hmac.new(
+        secret.encode(),
+        json.dumps(payload, separators=(',', ':')).encode(),
+        hashlib.sha256
+    ).hexdigest()
+    return hmac.compare_digest(expected_signature, received_signature)
+
+# Function call example
+payload = {"event": "payment", "amount": 100}
+secret = "ваш_секретный_ключ"
+received_signature = "полученная_подпись"
+
+print(verify_webhook_signature(payload, received_signature, secret))
+```
+
+```Node.js
+const crypto = require('crypto');
+
+function verifyWebhookSignature(payload, receivedSignature, secret) {
+  const expectedSignature = crypto
+    .createHmac('sha256', secret)
+    .update(JSON.stringify(payload))
+    .digest('hex');
+
+  return crypto.timingSafeEqual(Buffer.from(expectedSignature), Buffer.from(receivedSignature));
+}
+
+// Function call example
+const payload = { event: "payment", amount: 100 };
+const secret = "your_secret_key";
+const receivedSignature = "signature_from_headers";
+
+console.log(verifyWebhookSignature(payload, receivedSignature, secret));
+```
+
+```PHP
+<?php
+function verify_webhook_signature($payload, $received_signature, $secret) {
+    $expected_signature = hash_hmac("sha256", json_encode($payload), $secret);
+    return hash_equals($expected_signature, $received_signature);
+}
+
+// Function call example
+$payload = ["event" => "payment", "amount" => 100];
+$secret = "your_secret_key";
+$received_signature = "signature_from_headers";
+
+var_dump(verify_webhook_signature($payload, $received_signature, $secret));
+```
+
+```Go
+package main
+
+import (
+	"crypto/hmac"
+	"crypto/sha256"
+	"encoding/hex"
+	"encoding/json"
+	"fmt"
+)
+
+func verifyWebhookSignature(payload map[string]interface{}, receivedSignature string, secret string) bool {
+	jsonPayload, _ := json.Marshal(payload)
+	h := hmac.New(sha256.New, []byte(secret))
+	h.Write(jsonPayload)
+	expectedSignature := hex.EncodeToString(h.Sum(nil))
+	return hmac.Equal([]byte(expectedSignature), []byte(receivedSignature))
+}
+
+func main() {
+	payload := map[string]interface{}{
+		"event":  "payment",
+		"amount": 100,
+	}
+	secret := "your_secret_key"
+	receivedSignature := "signature_from_headers"
+
+	fmt.Println(verifyWebhookSignature(payload, receivedSignature, secret))
 }
 ```
