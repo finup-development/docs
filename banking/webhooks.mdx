@@ -58,7 +58,7 @@ To subscribe to webhooks, you need to go to the [Menu -> Settings -> API -> Webh
 ## Webhook signature
 
 To make sure the webhook is not fake and was actually sent by us, you can check the signature using 'x-webhook-signature' from the headers and your secret in this algorithm:
-### Python
+### Python:
 ```python
 import hmac
 import hashlib
@@ -74,12 +74,12 @@ def verify_webhook_signature(payload: dict, received_signature: str, secret: str
 
 # Function call example
 payload = {"event": "payment", "amount": 100}
-secret = "ваш_секретный_ключ"
-received_signature = "полученная_подпись"
+secret = "your_secret_key"
+received_signature = "signature_from_headers"
 
 print(verify_webhook_signature(payload, received_signature, secret))
 ```
-### JS
+### JS:
 ```JavaScript
 const crypto = require('crypto');
 
@@ -99,7 +99,7 @@ const receivedSignature = "signature_from_headers";
 
 console.log(verifyWebhookSignature(payload, receivedSignature, secret));
 ```
-### PHP
+### PHP:
 ```PHP
 <?php
 function verify_webhook_signature($payload, $received_signature, $secret) {
