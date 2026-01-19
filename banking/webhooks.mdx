@@ -56,6 +56,25 @@ To subscribe to webhooks, you need to go to the [Menu -> Settings -> API -> Webh
 }
 ```
 
+### OtpWallet
+```json
+{
+  "id": "680a2a9b00ae350518581234",
+  "account_id": "680a2a9b00ae350518589904",
+  "code": "412229",
+  "card_id": "680a2a9b00ae354878586604",
+  "device": "Apple/Google",
+  "created_at": "2025-04-24T12:12:11.347+00:00",
+  "updated_at": "2025-04-24T12:12:11.347+00:00",
+  "card": {
+    "id": "680a2a9b00ae354878586604",
+    "masked_PAN": "4302 63** **** 1234",
+    "name": "Test Card",
+  },
+  "webhook_type": "OtpWallet",
+}
+```
+
 ## Webhook signature
 
 To make sure the webhook is not fake and was actually sent by us, you can check the signature using 'x-webhook-signature' from the headers and your secret in this algorithm:
